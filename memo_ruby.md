@@ -35,3 +35,17 @@ input.each do |i|
     puts i
 end
 ```
+
+## 分割する
+### splitメソッド
+- 改行（改行は`\n`でもできる。「optキー」＋「¥」でバックスラッシュ「\」をうてる。）
+
+`文字列.split(区切り文字)`
+```ruby
+s, t = 'Hello paiza'.split(' ')
+puts s
+puts t
+# 出力例 
+Hello
+paiza
+```
