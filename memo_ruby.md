@@ -1,7 +1,7 @@
 # 学習の覚書
 主にpaizaで練習問題をこなしての学習メモです。
 ---
-### 値入力の基本
+## 値入力の基本
 - 文字列
 ```ruby
 gets.chomp
@@ -9,6 +9,19 @@ gets.chomp
 - 数字
 ```ruby
 gets.to_i
+```
+
+### 入力数が多い時は配列に値を追加する
+- 例.1000個の値を入力し、1000個の値を出力
+Array.new()で配列を取得し、その中に値を入力する。
+```ruby
+a = Array.new(1000)
+1000.times do |i|
+    a[i] = gets.to_i
+end
+a.each do |b|
+    puts b
+end
 ```
 
 # rubyでの用途別メソッド
@@ -23,6 +36,11 @@ vowels = "aiueoAIUEO"
 ```
 
 ## 配列を使う
+- 長さ n の配列を生成することができる
+```ruby
+Array.new(n)
+```
+
 - １０回入力して10回putsするプログラム。
 - 入力をからの`input`に配列として保持して、`each do`で一つずつ出力している。
 ```ruby
