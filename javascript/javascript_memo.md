@@ -20,3 +20,23 @@ console.log("スライムが" + randnum + "匹あらわれた");
 
 ---
 
+## if文
+基本形
+```javascript
+if (条件式1) {
+    処理1;
+} else {
+    処理2;
+}
+```
+### if文による簡単な占い
+```javascript
+process.stdin.resume();
+process.stdin.setEncoding('utf8');
+var number = parseInt(Math.random() * 10) + 1;
+if (number % 2 == 0) {
+    console.log("好き！");
+} else {
+    console.log("嫌い！");
+}
+```
