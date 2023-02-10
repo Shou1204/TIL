@@ -20,6 +20,11 @@ console.log("スライムが" + randnum + "匹あらわれた");
 
 ---
 
+### 切り上げ整数にする
+```javascirpt
+let damage = Math.floor(Math.random() * 10);
+```
+
 ## if文
 基本形
 ```javascript
@@ -55,4 +60,62 @@ var day = hiduke.getDate();
 var yobi= new Array("日","月","火","水","木","金","土");
 
 document.write("西暦"+year+"年"+month+"月"+day+"日 "+yobi[week]+"曜日");
+```
+
+## 繰り返し処理
+
+### whileメソッド
+```javascript
+while (条件式){
+    繰り返し処理
+}
+```
+
+### forメソッド
+```javascript
+for (条件式に使う変数の初期化処理; 条件式; 条件式に使う変数の値の更新) {
+    繰り返し処理
+}
+```
+
+## javascriptでの標準入力
+
+```javascript
+process.stdin.resume();
+process.stdin.setEncoding('utf8');
+
+var input_string = "";
+var reader = require('readline').createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+reader.on('line', (line) => {
+    input_string = line
+});
+reader.on('close', () => {
+    var input_int = parseInt(input_string)
+    var result = input_int + 100;
+    console.log(result);
+});
+```
+- 標準入力で与えられるのは文字列なため、数値にするなら`parseInt関数`で変換する必要がある
+```javascript
+// 標準入力からテキストを取得する
+
+process.stdin.resume();
+process.stdin.setEncoding('utf8');
+
+var input_string = "";
+var reader = require('readline').createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+reader.on('line', (line) => {
+    // ここで入力を処理する
+    input_string = line
+});
+reader.on('close', () => {
+    // ここで出力する
+    console.log(input_string)
+});
 ```
