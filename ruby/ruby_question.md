@@ -1,4 +1,4 @@
-### 以下を出力するコード
+## 以下を出力するコード
 ```
 入力例1
 13 5085 2923 8669 3231 7032 73 2683 8317 5545 9774 7179 2646 2470
@@ -30,7 +30,7 @@ a.each { |val| puts val }
 - 先頭の`13`を除くために`shift`メソッドを使った。配列aからも`13`は取り除かれる。
 ---
 
-### 以下を出力するコード
+## 以下を出力するコード
 ```
 # 入力例1
 5
@@ -54,4 +54,57 @@ n = gets.to_i
 a = Array.new(n)
 n.times { |i| a[i] = gets.chomp }
 a.each { |val| puts val}
+```
+---
+
+## 文字列と整数を結合して出力する問題
+```
+# 入力例1
+5
+paiza 813
+pa 81
+8pa 13
+iza 8
+pa 13
+
+# 出力例1
+paiza 813
+pa 81
+8pa 13
+iza 8
+pa 13
+```
+解答
+```
+n = gets.to_i
+
+s = Array.new(n)
+a = Array.new(n)
+n.times do |i|
+  s[i], a[i] =
+    gets.split(' ').map.with_index { |val, j| j == 1 ? val.to_i : val }
+end
+
+n.times { |i| puts s[i] + ' ' + a[i].to_s }
+```
+- Enumerator.with_index でインデックスを取得することができる
+- 配列.map.with_index で 配列 の要素とインデックスを両方取得しながら繰り返し処理をすることができる
+- `条件式 ? a : b` と書くことで、「条件式が真のときは a を返す」、「条件式が負のときは b を返す」という処理ができる
+- 上記で、配列 s は文字列を、配列 a は整数を、それぞれ格納するようにできます。
+- `a[i]`を文字列に変換しないとエラーになるので注意
+
+
+## Enumerator.with_index について
+- ここの `Enumerator` とは `Enumeratorクラス` のこと。
+each や map などがある。
+https://docs.ruby-lang.org/ja/latest/class/Enumerator.html
+
+- .with_indexによって番号をつけることができる
+ブロック変数の最後に書いた変数がインデックスになる。下記の例だと`index`
+```ruby
+# 配列arrayにmapメソッドを使う
+# with_indexでindexを添える（0から始まる）
+array.map.with_index{ |fruit,index|
+#処理
+}
 ```

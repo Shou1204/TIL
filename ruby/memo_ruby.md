@@ -9,7 +9,11 @@ gets.chomp
 - 数字
 ```ruby
 gets.to_i
+
+# 小数点を含む場合
+gets.to_f #.to_iでは整数になる
 ```
+
 ## 配列
 
 ### 配列基本
