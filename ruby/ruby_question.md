@@ -29,3 +29,29 @@ a.each { |val| puts val }
 - 一行の入力なので`split`で全てを個別の数値に分ける。
 - 先頭の`13`を除くために`shift`メソッドを使った。配列aからも`13`は取り除かれる。
 ---
+
+### 以下を出力するコード
+```
+# 入力例1
+5
+hello
+paiza
+813
+paiza2020
+Nice
+
+# 出力例1
+hello
+paiza
+813
+paiza2020
+Nice
+```
+
+解答
+```ruby
+n = gets.to_i
+a = Array.new(n)
+n.times { |i| a[i] = gets.chomp }
+a.each { |val| puts val}
+```
