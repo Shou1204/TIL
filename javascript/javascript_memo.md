@@ -287,3 +287,29 @@ function add(num1,num2) { //()には引数の2,3がそれぞれnum1,num2とい�
 add(2,3);
 ```
 
+## デバッグについて
+基本的には`console.log`を使用する
+```javascript
+const value = "hello";
+function add(num1, num2) {
+  console.log("num1:",num1,"num2:",num2);
+  const value = num1 + num2;
+  return value;
+}
+const newValue = add(2, 3);
+console.log(newValue);
+```
+- デベロッパーツールで見ると文字列は白、数字は青で表示される
+- console.logはパラメータをいくらでも","で区切って設定できる
+
+## デベロッパーツールのSourcesタブでデバッグする
+### ブレイクポイントを使用
+- Sourcesタブの左側の行数をクリックするとブレイクポイントが作成される（青くマークがつく）
+- リロードするとその処理が実行される直前までで処理が止まる
+- ブレイクポイントは複数作ることができる
+- 右側の早送りボタンで次のブレイクポイントまで進められる
+
+### debugger文を使う
+```javascript
+debugger;
+```
