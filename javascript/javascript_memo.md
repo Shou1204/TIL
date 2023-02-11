@@ -119,3 +119,27 @@ reader.on('close', () => {
     console.log(input_string)
 });
 ```
+
+## 命名規則
+- 記号は入れれない($,_は除く)
+- 予約後は使えない
+- キャメルケースで書くこと
+```javascript
+// 例
+let tomatoCount
+let tomatoCountNumber
+```
+
+## 代入演算子
+### ++について
+- 以下は同じ意味になる
+- ただし、引数に使う場合の戻り値は異なる
+```javascript
+let result = 5;
+result = result + 1;
+result += 1;
+result++;
+++result;
+
+// 基本的にはresult += 1;を使うこと
+```
