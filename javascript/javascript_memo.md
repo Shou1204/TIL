@@ -149,9 +149,23 @@ let tomatoCount;
 let tomatoCountNumber;
 ```
 
-## 代入演算子
+## 演算子
 
-### ++について
+### typeof演算子　データ型を判定する
+- コンソール画面で確認できる
+```javascript
+typeof 3
+//=> number
+typeof "shohei"
+//=> string
+typeof { name: "shohei" }
+//=> object
+typeof [1,2,3]
+//=> object
+```
+
+
+### 代入演算子 ++について
 
 - 以下は同じ意味になる
 - ただし、引数に使う場合の戻り値は異なる
@@ -245,4 +259,30 @@ coffee.isHot = false;
 coffee.barista = "shohei"; //プロパティにbarista、値に"shohei"を追加
 console.log(coffee.barista);
 // => shohei
+```
+
+## 関数について
+### 関数宣言
+- 下記では`add`という関数を定義した
+```javascript
+// 関数宣言
+function add() {
+  console.log(1 + 1);
+}
+
+//関数の呼出
+add();
+//=> 2
+```
+
+### 引数とパラメータ
+```javascript
+// ()内をパラメータまたは仮引数という
+function add(num1,num2) { //()には引数の2,3がそれぞれnum1,num2というパラメータに代入される
+  console.log(num1 + num2);
+}
+//=> 5
+
+//()内を引数またはアーグメントという
+add(2,3);
 ```
