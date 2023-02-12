@@ -108,3 +108,46 @@ array.map.with_index{ |fruit,index|
 #処理
 }
 ```
+
+## データ型の理解がなくてエラーが発生した話
+- 下記のコードでエラーが発生。
+```ruby
+# 入力
+# 2 3
+# 1 2 3
+# 8 1 3
+
+m = gets.split(" ").map(&:to_i)
+n = m.shift
+s = Array.new(n).map{ Array.new(m)}
+n.times do |i|
+    row = gets.split(" ").map(&:to_i)
+    m.times { |j| s[i][j] = row[j]}
+end
+s.each { |row| puts row.join(" ")}
+```
+-上記の`m.times { |j| s[i][j] = row[j]}`の部分で
+```
+Main.rb:7:in `block in <main>': undefined method `times' for [3]:Array (NoMethodError)
+```
+が発生。
+### 原因
+- mが配列であった事
+- 配列は数値としては扱えない
+
+### どういうことか
+- 取り出し方で配列になるか数値になるか異なる
+例えば
+```ruby
+n, m = gets.split(' ').map(&:to_i)
+puts "n: #{n}, m: #{m}"
+# 出力は n: 2, m: 3 
+```
+```ruby
+m = gets.split(" ").map(&:to_i)
+n = m.shift
+puts "n: #{n}, m: #{m}"
+# 出力は n: 2, m: [3]
+```
+となる。
+つまり数値で取り出すには`shift`を使うべきでは無く、一つ目の例で変数を定義するべきであった。
