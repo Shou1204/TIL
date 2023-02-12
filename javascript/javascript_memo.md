@@ -192,6 +192,22 @@ string = `hello ${user} !`;
 // => hello shohei !
 ```
 
+### 同値演算子
+``` javascript
+// 左と右が同じであれば、true、そうでなければ false を返す
+ok = 1 === 1
+
+// 左と右が同じであれば、false、そうでなければ true を返す
+ok = 1 !== 1
+
+// 等値演算子
+// 同値演算子と似てるが少し条件が緩くても trueになる
+// 基本的に使わない
+
+ok = 1 == 1
+
+```
+
 ## 改行の仕方
 
 - `\n`を使う方法
@@ -313,3 +329,119 @@ console.log(newValue);
 ```javascript
 debugger;
 ```
+
+## オブジェクト　と　===
+```javascript
+const coffee = { name: "cafe latte"};
+const coffee2 = { name: "cafe latte"};
+
+ok = coffee === coffee2
+console.log(ok)
+//=> false
+
+const coffee = { name: "cafe latte"};
+const coffee2 = { name: "cafe latte"};
+
+ok = coffee.name === coffee2.name
+console.log(ok)
+//=> true
+```
+中身は一緒だが、オブジェクトそれぞれは別の個体と認識される。中身の文字列だけ抜き出した場合は普通の文字と扱いは同じ
+
+## 比較演算子について
+- 実は文字でも比較できる。
+- 大体文字順の通りと考えてよい
+```javascript
+ok = "a" < "b"; //文字順通り
+console.log(ok);
+//=> true
+
+ok = "A" < "a"; //大文字の方が先
+console.log(ok);
+//=> true
+```
+
+## Truthy と Falsyについて
+```javascript
+ok = "hello";
+
+if (ok) {
+  console.log("OK!");
+} else {
+  console.log("NO!");
+}
+//=> true
+```
+- 文字列はtrueとして扱われる
+- trueになるものはTruthyと呼ばれる
+- https://developer.mozilla.org/en-US/docs/Glossary/Falsy
+この中に書いてあるもの以外はTruthyとして扱われる
+### Falsyの種類
+```javascript
+false
+
+0
+
+-0
+
+0n
+
+"", '', `` // 空文字
+
+null
+
+undefined
+
+NaN
+
+document.all
+
+```
+
+## 論理積演算子と論理和演算子
+- 論理積演算子 &&
+- 論理和演算子 ||
+```javascript
+// 左側がTruthyだったら右側を返す
+ok = true && true;
+ok = "hello" && "hi";
+//=> "hi"
+
+
+// 左側がfalsyだったら左を返す
+ok = 0 && true;
+//=> 0
+
+
+// 左側がTruthyだったら左側を返す
+ok = true || true;
+ok = "hello" && "hi";
+//=> "hello"
+
+// 左側がFalsyだったら右側を返す
+ok = 0 && "hi";
+//=> 0
+```
+```javascript
+// 両方がtrueの時だけtrueになる
+ok = true && true;
+
+// 両方がfalseの時だけfalseになる
+ok =  false || false;
+
+ok = "hello" && "hi";
+console.log(ok)
+```
+
+### この原理を使った応用の使い方
+```javascript
+const userInput = "";
+const userName = userInput || "User";
+console.log(userName)
+```
+- userNameが空文字だった時にデフォルトの値`user`を使うことができる
+- よく使う手法
+
+## 演算子の優先順位
+https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Operator_Precedence
+
