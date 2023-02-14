@@ -30,3 +30,45 @@ end
 
 puts total
 ```
+### [五目並べ（斜め） (paizaランク C 相当)](https://paiza.jp/works/mondai/prob60/tic_tac_toe_4/edit?language_uid=ruby&t=5a8f61ec9ec58dbf3c4586094039aff3)
+
+```ruby
+gomoku = []
+5.times {|i| gomoku << gets.chomp.split("")}
+result = "D"
+x = 0
+o = 0
+(0..4).each do |i|
+    if gomoku[i][i] == "X"
+        x += 1
+    elsif gomoku[i][i] == "O"
+        o += 1
+    end
+    if x == 5
+       result = gomoku[2][2]
+       break
+    elsif o == 5
+        result = gomoku[2][2]
+        break
+    end
+end
+j = 4
+x = 0
+o = 0
+(0..4).each do |i|
+    if gomoku[i][j] == "X"
+        x += 1
+    elsif gomoku[i][j] == "O"
+        o += 1
+    end
+    j -= 1
+    if x == 5
+       result = gomoku[2][2]
+       break
+    elsif o == 5
+        result = gomoku[2][2]
+        break
+    end
+end
+puts result
+```
