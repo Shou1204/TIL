@@ -179,7 +179,16 @@ b = a << 4
 p a #[1, 2, 3, 4]
 p b #[1, 2, 3, 4]
 ```
+## 配列の結合（join) 表示を一列にする場合など
+```ruby
+array = ['ruby', 'python']
+p array.join
+# => "rubypython"
 
+array = [['ruby','rails'],['python','django']]
+p array.join(' ')
+# => "ruby rails python django"
+```
 
 ---
 
