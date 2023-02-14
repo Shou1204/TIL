@@ -50,6 +50,16 @@ a.each do |b|
 end
 ```
 
+## 配列の文字列を空白で区切って書く
+- `%w`を配列の前に書くと空白区切りで配列を表すことができる
+```ruby
+# 以下は全く同じもの
+
+array = %w[HND NRT KIX NGO NGO]
+
+array = ["HND", "NRT", "KIX", "NGO", "NGO"]
+```
+
 ### 配列の先頭を取り出す
 
 - shift メソッド
@@ -116,7 +126,15 @@ p array
 array.sort!
 p array
 # =>[100, 150, 200, 300, 400]
+
+array = [  {"name" => "うどん", "price" => "300"},  {"name" => "パスタ", "price" => "700"},  {"name" => "ラーメン", "price" => "500"}]
+p array.sort_by {|x| x["price"] }
+
+# => [{"name"=>"うどん", "price"=>"300"}, {"name"=>"ラーメン", "price"=>"500"}, {"name"=>"パスタ", "price"=>"700"}]
 ```
+
+
+---
 # ruby での用途別メソッド
 
 # 文字列
