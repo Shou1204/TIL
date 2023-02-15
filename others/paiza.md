@@ -72,3 +72,17 @@ o = 0
 end
 puts result
 ```
+
+
+### [C083:売上の発表](https://paiza.jp/works/challenges/399/page/result)
+```ruby
+n,r = gets.split(" ").map(&:to_i)
+profit = []
+n.times do |i|
+    profit << (gets.to_i / r)
+end
+max = profit.max
+n.times do |i|
+    puts "#{i+1}:" + ("*" *profit[i]) + ("." * (max - profit[i]))
+end
+```
