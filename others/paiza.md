@@ -86,3 +86,36 @@ n.times do |i|
     puts "#{i+1}:" + ("*" *profit[i]) + ("." * (max - profit[i]))
 end
 ```
+
+### [C039:古代の数式](https://paiza.jp/works/challenges/177/page/result)
+```ruby
+s = gets.chomp
+n = s.count("+") + 1
+r = s.split("+")
+total = 0
+n.times do |i|
+    count1 = r[i].count("/")
+    count10 = r[i].count("<")
+    total += count10 * 10 + count1
+end
+puts total
+```
+
+### [C056:テストの採点](https://paiza.jp/works/challenges/266/page/result)
+```ruby
+n,passing_score = gets.split(" ").map(&:to_i)
+# 学生の成績を格納するハッシュ
+scores = {}
+
+# 成績を計算する
+n.times do |i|
+  score_data = gets.split.map(&:to_i)
+  test_score = score_data[0]
+  absence_count = score_data[1]
+  score = [test_score - absence_count * 5, 0].max
+  scores[i+1] = score
+end
+
+# 合格点以上の学生を出力する
+scores.select { |k, v| v >= passing_score }.each_key { |k| puts k }
+```
