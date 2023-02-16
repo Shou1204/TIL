@@ -119,3 +119,29 @@ end
 # 合格点以上の学生を出力する
 scores.select { |k, v| v >= passing_score }.each_key { |k| puts k }
 ```
+
+### [辞書 (paizaランク C 相当)](https://paiza.jp/works/mondai/c_rank_level_up_problems/c_rank_dictionary_boss/edit?language_uid=ruby&t=abf3639095f136de8c8753e3fc50a496)
+p 人のグループ A , q 人のグループ B , r 人のグループ C があります。各グループのメンバーにはそれぞれ番号がつけられており、 A グループの i 番目の人は B グループの j 番目の人に仕事を任せ、 B グループの j 番目の人は与えられた仕事を C グループの k 番目の人に任せます。すると結局、 A グループの i 番目の人の仕事をするのは C グループの k 番目の人だということになります。
+
+パイザ君は A グループの各人の仕事を結局 C グループの誰が行うことになるのか知りたがっています。 A グループの人のそれぞれが最終的に C グループの誰に仕事を頼むことになるのかを、 A グループの人の番号が小さい順に p 行出力してください。
+
+
+```ruby
+a,b,c = gets.split(" ").map(&:to_i)
+ab = {}
+bc = {}
+a.times do
+    key,value = gets.split(" ").map(&:to_i)
+    ab[key] = value
+end
+b.times do
+    key,value = gets.split(" ").map(&:to_i)
+    bc[key] = value
+end
+ab = ab.sort_by{|x,y| x}.to_h
+j = 1
+ab.each_value do |i|
+    puts "#{j} #{bc[i]}"
+    j += 1
+end
+```
