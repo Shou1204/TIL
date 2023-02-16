@@ -257,6 +257,18 @@ p teams[0][2]
 # => "魔法使い"
 ```
 
+## Array.newメソッドで作成する
+```ruby
+numbers3 = Array.new(4)
+p numbers3
+# => [nil, nil, nil, nil]
+
+# ４個の配列を作る、中身は1
+numbers3 = Array.new(4,1)
+p numbers3
+# => [1, 1, 1, 1]
+```
+
 ## loop処理
 
 - インデックスをつける
@@ -266,4 +278,11 @@ team = ["勇者", "戦士", "魔法使い"]
 team.each_with_index do |person, i|
     puts "#{i}番目の#{person}が、スライムと戦った"
 end
+```
+
+## mapで作成
+```ruby
+numbers3 = Array.new(4).map{Array.new(3, 1)}
+p numbers3
+# => [[1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1]]
 ```
