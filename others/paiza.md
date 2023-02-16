@@ -145,3 +145,41 @@ ab.each_value do |i|
     j += 1
 end
 ```
+
+### [シミュレーション (paizaランク C 相当)](https://paiza.jp/works/mondai/c_rank_level_up_problems/c_rank_simulation_boss/edit?language_uid=ruby&t=06ef4c709101829f4231b032f542821a)
+カウンター魔法を得意とするパイザ君は、同じくカウンター魔法を使うモンスターと戦っています。バトルはターン制で、パイザ君が先攻で、パイザ君とモンスターで交互に魔法を使い合います。パイザ君の魔法は 1 回目と 2 回目に使うときにはダメージ 1 ですが、 3 回目以降の n 回目には、(モンスターから受けた (n - 1) 回目の攻撃のダメージ) + (モンスターから受けた (n - 2) 回目の攻撃のダメージ) のダメージを与えます。モンスターの魔法はこれよりも強力で、 1 回目と 2 回目には同じくダメージ 1 ですが、 3 回目以降の n 回目には、 (パイザ君から受けた (n - 1) 回目の攻撃のダメージ) * 2 + (パイザ君から受けた (n - 2) 回目の攻撃のダメージ) のダメージを与えます。
+
+パイザ君は自分がどれくらいモンスターの攻撃を耐えられるか知りたいと思っています。パイザ君の体力を H として、両者が同じ魔法を使い続けたとき、モンスターの何回目の攻撃でパイザ君の体力が 0 以下になるかを出力してください。
+
+- 入力例
+7
+
+- 出力例
+4
+
+```ruby
+h = gets.to_i
+paiza_a = 1
+paiza_as={1 => 1,2 => 1}
+enemy_a = 1
+enemy_as={1 => 1,2 => 1}
+count = 0
+2.times do |i|
+    if h > 0
+        h -= 1
+        count += 1
+    end
+end
+puts count if h <= 0
+
+(3..100).each do |i|
+        paiza_a = enemy_as[i-1] + enemy_as[i-2]
+        paiza_as[i] = paiza_a
+        enemy_a = (paiza_as[i-1]) * 2 + paiza_as[i-2]
+        enemy_as[i] = enemy_a
+        h -= enemy_a
+        count +=1
+        break if h <= 0
+end
+puts count
+```
