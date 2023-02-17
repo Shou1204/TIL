@@ -70,15 +70,43 @@ team.push("勇者")
 ```
 
 ## 削除
-
-### 指定
-
+### 条件で削除
 - delete_at メソッド
 
 ```ruby
 team = ["勇者","魔法使い"]
 team.delete_at(0)
 ```
+
+## 取得
+### 条件で取得
+- select do で条件を指定して取得する
+```ruby
+配列オブジェクト.select { |変数| ブロック処理 }
+```
+```ruby
+array = [1,2,3,4,5]
+p array.select { |num| num > 3 }
+#=> [4, 5]
+```
+- each_with_indexを同時に使用できる
+```ruby
+array = [8,33,43,56,77]
+p array.each_with_index.select {|num,index| index > 2}
+#=> [[56, 3], [77, 4]]
+```
+- 文字列を含んでいるものを取得する
+```ruby
+array = ["right","light","erect","elect"]
+p array.select{|a| a.include?("ect")}
+p array.select{|a| a.include?("ght")}
+# => ["erect", "elect"]
+# => ["right", "light"]
+```
+
+### 指定
+
+
 
 ## 更新
 - mapメソッドで更新する
