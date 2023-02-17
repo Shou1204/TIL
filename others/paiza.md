@@ -183,3 +183,16 @@ puts count if h <= 0
 end
 puts count
 ```
+
+### [C060:辞書の作成 再チャレンジ採点結果](https://paiza.jp/challenges/291/retry_result/b7b8106a784a5d8d1227ce8e4b61c062)
+
+```ruby
+n,k,page = gets.split(" ").map(&:to_i)
+words = gets.chomp.split(" ")
+words = words.sort_by{|x| x }
+
+words_number = k * (page-1)
+((words_number)..(words_number + (k-1))).each do |i|
+    puts words[i]
+end
+```
