@@ -339,3 +339,28 @@ puts target_status_2
 ```
 - selectで抽出した値は配列なので`.join`で文字列に変換している
 - each_valueの中はスコープ範囲外なので先に変数の宣言をしておくこと
+
+### [占い Ruby編](https://paiza.jp/works/mondai/prob60/fortune_telling_9)
+```ruby
+n = gets.to_i
+data_1 = {}
+n.times do |i|
+    name, status_1 = gets.chomp.split(" ")
+    data_1[name] = status_1
+end
+
+data_2 = {}
+n_2 = gets.to_i
+n_2.times do |i|
+    status_1 , status_2 = gets.chomp.split(" ")
+    data_2[status_1] = status_2
+end
+
+kumiawase = []
+j = 0
+data_1.each do |i|
+    kumiawase << data_2.select {|x,y| x == i[1]}.values.join
+    puts "#{i[0]} #{kumiawase[j]}"
+    j += 1
+end
+```
