@@ -309,3 +309,33 @@ count = 0
 
 yoko(a,xo)
 ```
+
+### [1人の占い結果 Ruby編](https://paiza.jp/works/mondai/prob60/ruby/fortune_telling_4/result?token=83111a3d0c7097467c1fd15739849e10)
+
+```ruby
+target = gets.chomp
+n = gets.to_i
+data_1 = {}
+n.times do |i|
+    name, status_1 = gets.chomp.split(" ")
+    data_1[name] = status_1
+end
+
+data_2 = {}
+n = gets.to_i
+n.times do |i|
+    status_1 , status_2 = gets.chomp.split(" ")
+    data_2[status_1] = status_2
+end
+
+target_status_1 = data_1.select {|x,y| x == target}.values
+
+target_status_2 = []
+data_1.each_value do |i|
+    target_status_2 = data_2.select {|x,y| x == target_status_1.join}.values
+end
+
+puts target_status_2
+```
+- selectで抽出した値は配列なので`.join`で文字列に変換している
+- each_valueの中はスコープ範囲外なので先に変数の宣言をしておくこと
