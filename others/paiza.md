@@ -364,3 +364,19 @@ data_1.each do |i|
     j += 1
 end
 ```
+
+### [C010:安息の地を求めて]
+
+```ruby
+a,b,r = gets.split(" ").map(&:to_i)
+n = gets.to_i
+trees =[]
+n.times do |i|
+    x,y = gets.split(" ").map(&:to_i)
+    if (x-a)**2 + (y-b)**2 >= r**2
+        puts "silent"
+    else
+        puts "noisy"
+    end
+end
+```
