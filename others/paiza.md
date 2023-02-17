@@ -246,3 +246,66 @@ j = 4
 end
 puts "D"
 ```
+
+### [五目並べ Ruby編](https://paiza.jp/works/mondai/prob60/ruby/tic_tac_toe_9/result?token=d0d180d6a78844eccf0c3571f902b498)
+
+```ruby
+def yoko(a,xo)
+    xo.each do |x|
+        a.each do |i|
+           if i.count(x) == 5
+               return puts x
+            end
+        end
+    end
+    tate(a,xo)
+end
+
+def tate(a,xo)
+    xo.each do |x|
+        (0..4).each do |i|
+        count = 0
+          (0..4).each do |j|
+           if a[j][i] == x
+               count += 1
+               return puts x if count == 5
+            end
+          end
+        end
+    end
+    naname(a,xo)
+end
+
+def naname(a,xo)
+    xo.each do |x|
+        count = 0
+        j = 0
+        (0..4).each do |i|
+            if a[i][j] == x
+                count += 1
+                return puts x if count == 5
+                j += 1
+            end
+        end
+    end
+    xo.each do |x|
+        count = 0
+        j = 4
+        (0..4).each do |i|
+            if a[i][j] == x
+                count += 1
+                return puts x if count == 5
+                j -= 1
+            end
+        end
+    end
+    puts "D"
+end
+
+a =[]
+5.times {|i| a << gets.chomp.split("")}
+xo = %w[X O]
+count = 0
+
+yoko(a,xo)
+```
