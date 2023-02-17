@@ -215,3 +215,34 @@ w.each do |xo|
 end
 puts "D"
 ```
+
+### [五目並べ（斜め）](https://paiza.jp/works/mondai/prob60/ruby/tic_tac_toe_4/result?token=f35ed54e40cb9406695c1e9efcdb8169)
+
+```ruby
+a =[]
+5.times {|i| a << gets.chomp.split("")}
+w = %w[X O]
+w.each do |xo|
+count = 0
+j = 0
+    a.each do |i|
+        if i[j] == xo
+                count += 1
+        end
+        j += 1
+    return puts xo if count == 5
+    end
+end
+w.each do |xo|
+count = 0
+j = 4
+    a.each do |i|
+        if i[j] == xo
+                count += 1
+        end
+        j -= 1
+    return puts xo if count == 5
+    end
+end
+puts "D"
+```
