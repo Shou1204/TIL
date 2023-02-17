@@ -196,3 +196,22 @@ words_number = k * (page-1)
     puts words[i]
 end
 ```
+
+### [五目並べ（縦） Ruby編」](https://paiza.jp/works/mondai/prob60/tic_tac_toe_3/edit?language_uid=ruby)
+```ruby
+a =[]
+5.times {|i| a << gets.chomp.split("")}
+w = %w[X O]
+w.each do |xo|
+    (0..4).each do |i|
+    count = 0
+        a.each do |j|
+            if j[i] == xo
+                count += 1
+            end
+        end
+    return puts xo if count == 5
+    end
+end
+puts "D"
+```

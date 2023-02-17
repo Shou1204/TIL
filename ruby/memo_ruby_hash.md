@@ -39,6 +39,31 @@ puts enemy_hash[:ザコ]
 level ="ザコ"
 puts enemy_hash[level]
 ```
+# 取得
+- 基本の取得
+```ruby
+オブジェクト.keys
+オブジェクト.values
+```
+```ruby
+hash = { key1: "ruby", key2: "python", key3: "java"}
+puts hash.keys
+# => [:key1, :key2, :key3]
+
+puts hash.values
+# => ["ruby", "python", "java"]
+
+p hash.values[2]    #インデックスで指定する
+# => "java"
+
+```
+
+- selectで条件で取得する
+```ruby
+hash = { key1: "ruby", key2: "python", key3: "java"}
+p hash.select{ |key, value| value == "ruby" }
+# => {:key1=>"ruby"}
+```
 
 # 追加
 ```ruby
