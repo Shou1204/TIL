@@ -380,3 +380,29 @@ n.times do |i|
     end
 end
 ```
+
+### [C085:壊れかけのキーボード]
+```ruby
+numbers = gets.split(" ").map(&:to_i)
+hash = {}
+j= 0
+
+# { "a" => 1, "b" => 2 ...}のようなハッシュを作成
+("a".."z").each do |i|
+    hash[i] = numbers[j]
+    j += 1
+end
+
+words = gets.chomp.split("")
+
+result = []
+words.each do |w|
+    hash.each do |h|
+        # 使用回数の残っているもののみをresultの配列に入れていく
+         if w == h[0] && result.count(w) < h[1]
+            result << w
+        end
+    end
+end
+print result.join
+```
