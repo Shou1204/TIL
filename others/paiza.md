@@ -651,3 +651,19 @@ else
     puts favorite_rooms
 end
 ```
+
+### [C097:プレゼント応募企画](https://paiza.jp/works/challenges/480/page/result)
+```ruby
+n , a ,b = gets.split(" ").map(&:to_i)
+(1..n).each do |i|
+    if i % a == 0 && i % b == 0
+        puts "AB"
+    elsif i % a == 0
+        puts "A"
+    elsif i % b == 0
+        puts "B"
+    else
+        puts "N"
+    end
+end
+```
