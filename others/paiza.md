@@ -439,3 +439,58 @@ areas.each do |line|
     puts "" # 改行が必要
 end
 ```
+
+### [【マップの扱い 2】マップの書き換え・縦横 Ruby編](https://paiza.jp/works/mondai/b_rank_new_level_up_problems/b_rank_new_level_up_problems__get_upsidedown)
+```ruby
+# 行数と列数を取得
+h,w = gets.split(" ").map(&:to_i)
+
+# 地図の配列を作成
+areas = []
+
+# 配列に地図情報を入れる
+h.times do |i|
+    areas << gets.chomp.split("")
+end
+
+# 地図情報の変更の行番号、列番号を取得
+y,x = gets.split(" ").map(&:to_i)
+
+# 変更箇所を配列の中で変更する
+# 横の変更の配列を作る ただし範囲がだとエラーになるので範囲を絞る
+areas_y =[]
+areas_y << y - 1 if y -1 >= 0
+areas_y << y
+areas_y << y + 1 if y + 1 < h # 範囲外参照をするとエラーが出るので制限
+areas_y.each do |i|
+    if areas[i][x] == "."
+        areas[i][x] = "#"
+    elsif areas[i][x] == "#"
+        areas[i][x] = "."
+    end
+end
+# 縦の変更
+# (n,n)の組み合わせが重複するので "x+0"は配列に入れない
+areas_x =[]
+areas_x << x - 1 if x -1 >= 0
+areas_x << x + 1 if x + 1 < w # 範囲外参照をするとエラーが出るので制限
+areas_x.each do |i|
+    if areas[y][i] == "."
+        areas[y][i] = "#"
+    elsif areas[y][i] == "#"
+        areas[y][i] = "."
+    end
+end
+
+# 配列の中の地図情報を表示
+areas.each do |line|
+    line.each do |area|
+        print area
+    end
+    puts "" # 改行が必要
+end
+```
+- マップの j 行 i 列のマスに隣接している要素は、それぞれ S[i][j-1], S[i][j+1], S[i-1][j], S[i+1][j] で受け取れる。
+
+
+- 範囲外参照でエラーが出るので注意
