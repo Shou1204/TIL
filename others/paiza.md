@@ -406,3 +406,36 @@ words.each do |w|
 end
 print result.join
 ```
+
+### [マップの扱い 1】マップの書き換え・1 マス Ruby編](https://paiza.jp/works/mondai/b_rank_new_level_up_problems/b_rank_new_level_up_problems__get_one)
+
+```ruby
+# 行数と列数を取得
+h,w = gets.split(" ").map(&:to_i)
+
+# 地図の配列を作成
+areas = []
+
+# 配列に地図情報を入れる
+h.times do |i|
+    areas << gets.chomp.split("")
+end
+
+# 地図情報の変更の行番号、列番号を取得
+x,y = gets.split(" ").map(&:to_i)
+
+# 変更箇所を配列の中で変更する
+if areas[x][y] == "."
+    areas[x][y] = "#"
+else
+    areas[x][y] = "."
+end
+
+# 配列の中の地図情報を表示
+areas.each do |line|
+    line.each do |area|
+        print area
+    end
+    puts "" # 改行が必要
+end
+```
