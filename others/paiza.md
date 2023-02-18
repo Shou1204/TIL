@@ -667,3 +667,17 @@ n , a ,b = gets.split(" ").map(&:to_i)
     end
 end
 ```
+
+### [C014:ボールが入る箱](https://paiza.jp/works/challenges/48/page/result)
+
+```ruby
+n, r = gets.split(" ").map(&:to_i)
+(1..n).each do |i|
+    box_size = gets.split(" ").map(&:to_i)
+    count = 0
+    box_size.each do |size|
+        count += 1 if r * 2 <= size
+    end
+    puts i if count == 3
+end
+```
