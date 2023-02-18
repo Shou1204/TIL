@@ -494,3 +494,70 @@ end
 
 
 - 範囲外参照でエラーが出るので注意
+
+
+### [マップの扱い 3】マップの判定・縦横斜め Ruby編](https://paiza.jp/works/mondai/b_rank_new_level_up_problems/b_rank_new_level_up_problems__get_row_col)
+```ruby
+# 行数と列数を取得
+h,w = gets.split(" ").map(&:to_i)
+
+# 地図の配列を作成
+areas = []
+
+# 配列に地図情報を入れる
+h.times do |i|
+    areas << gets.chomp.split("")
+end
+
+# 地図情報の変更の行番号、列番号を取得
+target_y,target_x = gets.split(" ").map(&:to_i)
+
+# 縦を変える 範囲はhなのでeachの中は(...)でhを除外している
+(0...h).each do |y|
+    areas[y][target_x] = areas[y][target_x] == "." ? "#" : "."
+end
+
+# 横を変える 範囲はhなのでeachの中は(...)でhを除外している
+(0...w).each do |x|
+    areas[target_y][x] = areas[target_y][x] == "." ? "#" : "."
+end
+
+# 斜めを変える
+# 斜めは4通りある x,yがそれぞれ左上から(+,-),(+,+),(-,+),(-,-)
+# まず範囲を絞る
+(0...[h, w].max).each do |i|
+    # 中心より上に変更余地があるか
+    if target_y + i < h
+        # 中心より右側に変更余地があるか
+        if target_x+i < w
+            areas[target_y+i][target_x+i] = (areas[target_y + i][target_x + i] == '.') ? '#' : '.'
+        end
+        # 中心より左側に変更余地があるか
+        if target_x-i >= 0
+            areas[target_y+i][target_x-i] = (areas[target_y + i][target_x -i ] == '.') ? '#' : '.'
+        end
+    end
+    
+    # 中心よ下に変更余地があるか
+    if target_y - i >= 0
+        if target_x + i < w
+        areas[target_y-i][target_x+i] = (areas[target_y - i][target_x + i] == '.') ? '#' : '.'
+        end
+        if target_x - i >= 0
+        areas[target_y - i][target_x - i] = (areas[target_y - i][target_x - i] == '.') ? '#' : '.'
+        end
+    end
+end
+
+# target中心は縦と横で2回変えて戻っているのでもう一回変更する
+areas[target_y][target_x] = areas[target_y][target_x] == "." ? "#" : "."
+
+# 配列の中の地図情報を表示
+areas.each do |line|
+    line.each do |area|
+        print area
+    end
+    puts "" # 改行が必要
+end
+```
+- 今回はif文を条件演算子を使ってコードを短くしている
