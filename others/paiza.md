@@ -596,3 +596,26 @@ else
 end
 ```
 - `include?`メソッドがポイント
+
+### [C093:【キャンペーン問題】下桁ルール](https://paiza.jp/challenges/452/retry_result/1cbbe969b7b0cd735aa0cdaf89421b8c)
+
+```ruby
+def point(score)
+    ten = score == 100 ? 1 : score / 10
+    one = score % 10
+    total = ten + one
+    result = total % 10
+end
+
+bob_score,alice_score = gets.split(" ").map(&:to_i)
+
+if point(bob_score) > point(alice_score)
+    puts "Bob"
+elsif point(bob_score) < point(alice_score)
+    puts "Alice"
+else
+    puts "Draw"
+end
+```
+- 10の位と1の位の取得の仕方がポイント
+- 100の場合だけ"割る10"が当てはまらないので分岐にしている
