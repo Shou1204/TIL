@@ -619,3 +619,35 @@ end
 ```
 - 10の位と1の位の取得の仕方がポイント
 - 100の場合だけ"割る10"が当てはまらないので分岐にしている
+
+### [C013:嫌いな数字](https://paiza.jp/challenges/46/retry_result/e2a8ac79d4bb6dbac67331a1c5b2378c)
+
+```ruby
+# 嫌いな数字を取得、文字列で検索するので数字にはしない
+target = gets.chomp
+
+# 部屋の数（繰り返し回数）を取得
+n = gets.to_i
+
+# 部屋を取得するための配列を用意して中に入れる
+rooms = []
+n.times do
+    rooms << gets.chomp
+end
+
+# 部屋の中からお気に入りの部屋を分別する
+favorite_rooms =[]
+rooms.each do |room|
+    # 嫌いな数字に当てはまらなかったらお気に入りに追加
+    unless room.include?(target)
+        favorite_rooms << room
+    end
+end
+
+# お気に入りがあるかどうかを判定してから表示
+if favorite_rooms.size == 0
+    puts "none"
+else
+    puts favorite_rooms
+end
+```

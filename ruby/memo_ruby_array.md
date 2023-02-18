@@ -150,6 +150,7 @@ team.delete_at(0)
 ## 取得
 ### 条件で取得
 - select do で条件を指定して取得する
+- selectの反対の作用をするrejectがある
 ```ruby
 配列オブジェクト.select { |変数| ブロック処理 }
 ```
