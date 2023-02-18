@@ -561,3 +561,38 @@ areas.each do |line|
 end
 ```
 - 今回はif文を条件演算子を使ってコードを短くしている
+
+### [C072:モンスターの進化](https://paiza.jp/works/challenges/346/page/result)
+```ruby
+# 値を3つ受け取って、それぞれを固有の変数にする
+atk,defence,agi = gets.split(" ").map(&:to_i)
+
+# 繰り返し回数を受け取る
+n = gets.to_i
+
+# 最終的に当てはまるジョブを入れていく配列作成
+job_list =[]
+
+# それぞれのジョブごとに判定していく
+n.times do |i|
+    status = gets.split(" ")
+
+    # 配列の先頭だけジョブ名なので取り出しておく
+    # 取り出さなくても構わない
+    job = status.shift
+
+    # 条件3つを満たしているかどうか判定している
+    count = 0
+   count += 1 if ((status[0].to_i..status[1].to_i)).include?(atk)
+   count += 1 if ((status[2].to_i..status[3].to_i)).include?(defence)
+   count += 1 if ((status[4].to_i..status[5].to_i)).include?(agi)
+   job_list << job if count == 3
+end
+# ジョブが当てはまらない時だけメッセージが別なので配列の長さで判定している
+if job_list.size == 0
+  puts "no evolution"
+else
+    puts job_list
+end
+```
+- `include?`メソッドがポイント
