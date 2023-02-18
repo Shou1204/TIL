@@ -681,3 +681,15 @@ n, r = gets.split(" ").map(&:to_i)
     puts i if count == 3
 end
 ```
+
+### [C115:渋滞の距離](https://paiza.jp/works/challenges/560/page/result)
+
+```ruby
+n,m = gets.split(" ").map(&:to_i)
+total = 0
+(1..n).each do |i|
+    wide = gets.to_i
+    total += wide if m >= wide
+end
+puts total
+```
