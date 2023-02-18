@@ -208,3 +208,30 @@ puts string.count("道")
 
 puts は　改行あり
 print は　改行なし
+
+
+# 演算子
+
+### 条件演算子
+```ruby
+条件式 ? 式1 : 式2
+```
+この演算子の意味は、条件式が真であれば 式1 を評価し、偽であれば 式2 を評価する、というものです。
+
+```ruby
+result = 80
+flag = result > 60 ? "合格" : "不合格"
+p flag
+# => "合格"
+
+# 同じコードをifで書く
+result = 80
+if result > 60 then
+  flag = "合格"
+else
+  flag = "不合格"
+end
+p flag
+# => "合格"
+```
+- コードを短く書くことができる
