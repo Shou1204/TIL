@@ -748,3 +748,20 @@ q.times do |i|
 end
 puts t
 ```
+
+### [C116:あたり棒の検査](https://paiza.jp/challenges/566/retry_result/e48a9390b8efd06d598acfbdea6c9681)
+
+```ruby
+n,m = gets.split(" ").map(&:to_i)
+kuji = gets.chomp.split(" ")
+count = 0
+kuji.each do |i|
+    if i == "0"
+        count += 1
+        return puts "NG" if count >= m
+    else
+        count = 0
+    end
+end
+puts "OK"
+```
