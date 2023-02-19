@@ -733,3 +733,18 @@ n.times do |i|
 end
 puts (n * d - (over)) * d
 ```
+
+### [C088:RPGでお買い物](https://paiza.jp/en_try/challenges/424/page/result)
+```ruby
+n = gets.to_i
+prices = gets.split(" ").map(&:to_i)
+t , q = gets.split(" ").map(&:to_i)
+q.times do |i|
+    item_num , number = gets.split(" ").map(&:to_i)
+    item_price = prices[item_num - 1] * number
+    if item_price <= t
+        t -= item_price
+    end
+end
+puts t
+```
