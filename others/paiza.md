@@ -804,6 +804,42 @@ end
 puts count
 ```
 
+### [C067:【ハッカー入門コラボ問題】数字の調査](https://paiza.jp/challenges/share/gmp6ZpE1LbrEUqY1_WUWd_MbOYEReQWqHrUN3c4xhhs?source=social)
+- ポイントはformatメソッドで２進数に変換すること
+```ruby
+# 調べたいケタの数nと調べたい数字を取得
+n , target = gets.split(" ").map(&:to_i)
+
+# 数字を2進数に変換
+number = format("%b", target).to_s
+
+# 添字通りの順番ではないので全体の桁数が必要
+number_size = number.size
+
+# それぞれのケタの数字を出力
+n.times do |i|
+    keta = gets.to_i
+    puts number[number_size - (keta)]
+end
+```
+- 文字列の長さは必要ないことに気づいた
+- 文字列[-x]で末尾から-xの文字を取り出せる
+- 以下が書き直したもの
+
+```ruby
+# 調べたいケタの数nと調べたい数字を取得
+n , target = gets.split(" ").map(&:to_i)
+
+# 数字を2進数に変換
+number = format("%b", target).to_s
+
+# それぞれのケタの数字を出力
+n.times do |i|
+    keta = gets.to_i
+    puts number[ - keta]
+end
+```
+
 # 苦戦したもの
 ### [C026:ウサギと人参](https://paiza.jp/challenges/104/retry_result/fc2a11b179815c59e673ceb4bb4a9636)
 ```
