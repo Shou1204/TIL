@@ -812,3 +812,60 @@ end
 ```
 
 # 新しい発見があった問題
+
+### [C037:アニメの日時](https://paiza.jp/en_try/challenges/165/page/result)
+
+- 解けたがコードが助長なので、シンプルにする必要がある
+```ruby
+days = gets.split(" ")
+month , day = days[0].split("/").map(&:to_i)
+m,s = days[1].split(":").map(&:to_i)
+if m >= 24
+    day += m / 24
+    m = m % 24
+end
+
+s = s.to_s
+m = m.to_s
+day = day.to_s
+month = month.to_s
+if s.size == 1
+    s = "0" + s
+end
+if m.size == 1
+    m = "0" + m
+end
+if day.size == 1
+    day = "0" + day
+end
+if month.size == 1
+    month = "0" + month
+end
+puts "#{month}/#{day} #{m}:#{s}"
+```
+- 記述を整理した後
+- formatメソッドを使うとシンプルに記述ができる
+- また、formatメソッドを覚えると考えつくアルゴリズムが増えそうなので要学習
+```ruby
+# 入力を受け取る
+date, time = gets.chomp.split
+
+# 日付の各要素を抽出
+month, day = date.split('/').map(&:to_i)
+
+# 時刻の各要素を抽出
+hour, minute = time.split(':').map(&:to_i)
+
+# 時間が 24 時間以上の場合は日付を調整する
+day += hour / 24
+hour %= 24
+
+# 各要素を 2 桁に揃える
+month = format('%02d', month)
+day = format('%02d', day)
+hour = format('%02d', hour)
+minute = format('%02d', minute)
+
+# 出力する
+puts "#{month}/#{day} #{hour}:#{minute}"
+```
