@@ -884,3 +884,36 @@ minute = format('%02d', minute)
 # 出力する
 puts "#{month}/#{day} #{hour}:#{minute}"
 ```
+
+### [C074:【クロニクルコラボ問題】文章サイズ変更](https://paiza.jp/career/challenges/357/page/result)
+
+```ruby
+# 文字列の行数、一行の文字数、変更後の一行の文字数
+h , m , x = gets.split(" ").map(&:to_i)
+
+# 初期化
+words =[]
+
+# 文字を読み込む
+h.times { |i| words << gets.chomp.split("")}
+
+# 配列を文字列にする
+words = words.join
+
+# 最終的な行数を確認する
+# 行数によって繰り返し回数が変わるため
+if words.size % x == 0 # 文字数を一行の文字数で割ったあまりがあるという事は一行足りないので1足す
+    row = words.size/x
+else
+    row = words.size/x +1
+end
+
+# 前に計算した行数を出力
+# sliceメソッドの破壊的に使って出力したものは削除しながら表示
+row.times do |i|
+    print words.slice!(0,x)
+    puts ""
+end
+```
+- ポイントは行数の求め方と`slice!`を使った文字の抜き出し方
+- 文字列の場合は文字を取得するときにsliceをよく使う
