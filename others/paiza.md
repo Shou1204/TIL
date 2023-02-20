@@ -783,6 +783,27 @@ end
 puts count
 ```
 
+### [C101:【2021年Xmas問題】ラッキーデイ](https://paiza.jp/career/challenges/498/page/result)
+
+```ruby
+# ラッキーデイを設定、検索したいので文字列で
+lucky = gets.chomp.to_s
+
+# ラッキーdayのカウント
+count = 0
+
+# 検索するので文字列にする
+# 365日なので0から始めた場合は365が含まれないことに注意
+("0"..."365").each do |i|
+    if i.include?(lucky)
+        count += 1
+    end
+end
+
+# 結果を表示
+puts count
+```
+
 # 苦戦したもの
 ### [C026:ウサギと人参](https://paiza.jp/challenges/104/retry_result/fc2a11b179815c59e673ceb4bb4a9636)
 ```
