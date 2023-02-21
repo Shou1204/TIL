@@ -72,6 +72,11 @@ p string
 string = ["B"].join
 p string
 # => "B"
+
+array_3 = ["alice"]
+p array_3.join
+# => "alice"
+
 ```
 
 ### 入力数が多い時は配列に値を追加する
@@ -194,6 +199,15 @@ p array.select{|a| a.include?("ect")}
 p array.select{|a| a.include?("ght")}
 # => ["erect", "elect"]
 # => ["right", "light"]
+```
+- 積集合で複数の配列に共通しているものを取得する
+```ruby
+array = [2,3,4,5]
+array_2 = [1, 2, 3, 4, 5, 6, 7, 8]
+
+# 共通するものをピックアップする
+p array & array_2
+#=> [2, 3, 4, 5]
 ```
 
 ### 合計値を取得
