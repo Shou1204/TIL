@@ -840,6 +840,31 @@ n.times do |i|
 end
 ```
 
+### [C040:【ロジサマコラボ問題】背比べ](https://paiza.jp/en_try/challenges/181/page/result)
+
+- ポイント 最大値、最小値を変数で作成すること
+```ruby
+n = gets.to_i
+
+# 最大と最小の範囲の変数を作成
+max = 201.0 # これより小さかったら入れ替えるのでわざと大きい範囲外の値
+min = 0.0
+
+# 比較の数だけ最小値、最大値を比較し、入れ替えていく
+n.times do |i|
+    up_down , size = gets.chomp.split(" ")
+    size = size.to_f
+
+    if up_down == "le"
+        max = size if max > size
+    else
+        min = size if min < size
+    end
+end
+
+puts "#{min} #{max}"
+```
+
 # 苦戦したもの
 ### [C026:ウサギと人参](https://paiza.jp/challenges/104/retry_result/fc2a11b179815c59e673ceb4bb4a9636)
 ```
