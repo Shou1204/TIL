@@ -101,6 +101,18 @@ array = %w[HND NRT KIX NGO NGO]
 array = ["HND", "NRT", "KIX", "NGO", "NGO"]
 ```
 
+### 初めの値と終わりの値で配列を作成できる
+```ruby
+array_2 = (1..8).to_a
+p array_2
+#=> [1, 2, 3, 4, 5, 6, 7, 8]
+
+array_3 = ("a".."d").to_a
+p array_3
+#=> ["a", "b", "c", "d"]
+```
+
+
 ## 追加
 ### 同じインデックスの値をたす(便利！)
 ```ruby
