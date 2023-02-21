@@ -865,6 +865,14 @@ end
 puts "#{min} #{max}"
 ```
 
+### [C052:ゲームの画面](https://paiza.jp/en_try/challenges/246/page/result)
+- ポイント、-の値が入力されることもありうるので絶対値にすること
+```ruby
+h, w = gets.split(" ").map(&:to_i)
+dy, dx = gets.split(" ").map(&:to_i)
+puts (h * dx).abs + (w * dy).abs - (dx * dy).abs
+```
+
 # 苦戦したもの
 ### [C026:ウサギと人参](https://paiza.jp/challenges/104/retry_result/fc2a11b179815c59e673ceb4bb4a9636)
 ```
@@ -908,13 +916,60 @@ else
 end
 ```
 
-### [C052:ゲームの画面](https://paiza.jp/en_try/challenges/246/page/result)
-- ポイント、-の値が入力されることもありうるので絶対値にすること
-```ruby
-h, w = gets.split(" ").map(&:to_i)
-dy, dx = gets.split(" ").map(&:to_i)
-puts (h * dx).abs + (w * dy).abs - (dx * dy).abs
+### [C096:夏休み](https://paiza.jp/en_try/challenges/475/retry)
 ```
+子供は夏休みまっただ中。家族や親戚を誘ってお出かけしたいですが、みんなで休みを合わせないといけません。
+子供を除いたお出かけに行くメンバーの数と、各メンバーの休みを取れる期間が与えられます。その中でメンバー全員に共通する日があれば "OK"、なければ "NG" と出力してください。
+```
+- 間違いのあるコード
+- テストコードの一部を満たさない
+- どこが悪いのだろうか？
+```ruby
+n = gets.to_i
+day_start, day_last = gets.split(" ").map(&:to_i)
+days =[]
+(n-1).times { |i| days << gets.split(" ").map(&:to_i)}
+
+# 考え方として最初のメンバーの日付に含まれているかどうかを判定する
+# 含まれるには他のメンバーの初日か終日のどちらか一つでも含まれていれば良い
+days.each do |day|
+count = 0
+    (day_start..day_last).each do |j|
+        if day[0] == j || day[1] == j
+            count += 1
+        end
+    end
+    return puts "NG" if count == 0
+end
+puts "OK"
+```
+
+- 以下は書き換えたもの
+- 方針を変えて積集合で値を取得した
+```ruby
+n = gets.to_i
+day_start, day_last = gets.split(" ").map(&:to_i)
+
+# 共通の休暇期間に含まれる日付の範囲
+common_days = (day_start..day_last).to_a
+
+(n-1).times do |i|
+  # 各メンバーが休暇を取る日付の範囲
+  member_start, member_last = gets.split(" ").map(&:to_i)
+  member_days = (member_start..member_last).to_a
+
+  # 積集合で共通の日を取り出す
+  common_days &= member_days
+end
+
+# 共通の日が空かどうか
+if common_days.empty?
+  puts "NG"
+else
+  puts "OK"
+end
+```
+
 # 新しい発見があった問題
 
 ### [C037:アニメの日時](https://paiza.jp/en_try/challenges/165/page/result)
