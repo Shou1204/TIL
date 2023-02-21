@@ -883,6 +883,13 @@ else
 end
 ```
 
+### [C052:ゲームの画面](https://paiza.jp/en_try/challenges/246/page/result)
+- ポイント、-の値が入力されることもありうるので絶対値にすること
+```ruby
+h, w = gets.split(" ").map(&:to_i)
+dy, dx = gets.split(" ").map(&:to_i)
+puts (h * dx).abs + (w * dy).abs - (dx * dy).abs
+```
 # 新しい発見があった問題
 
 ### [C037:アニメの日時](https://paiza.jp/en_try/challenges/165/page/result)
