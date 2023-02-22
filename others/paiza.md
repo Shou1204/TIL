@@ -1148,7 +1148,70 @@ total = 0
 end
 puts total
 ```
+### [【条件判定 3】過剰コンプライアンス Ruby編](https://paiza.jp/works/mondai/b_rank_new_level_up_problems/b_rank_new_level_up_problems__over_conpriance)
 
+```ruby
+# 半分前半の文字列、後半の文字列、半分の長さを出力するメソッド
+def half_length(word) # 仮引数は文字列
+    word_length = word.size
+
+    # 奇数と偶数で分ける
+    # 奇数の場合は真ん中の文字が重複するため
+    if word_length % 2 == 0
+        half_len = (word_length / 2)
+    else
+        half_len = (word_length / 2) + 1 # 奇数は１文字重複する
+    end
+    # 3つの値を出力
+    [word.slice(0,half_len), word.slice(-half_len, half_len),half_len]
+end
+
+n = gets.to_i
+ng_word = gets.chomp
+
+# 文字列前半、後半を取得
+ng_word_first, ng_word_last= half_length(ng_word)
+
+n.times do |i|
+    word = gets.chomp
+
+    # 文字列前半、後半を取得
+    word_first , word_last,word_half= half_length(word)
+
+    # 前半、後半合っているかのカウント
+    count = 0
+
+    # 前半の判定
+    if word_first == ng_word_first
+        word_first = "x" * word_half
+        count += 1
+    else
+        # ngでない場合は前半をそのまま出力したいが、
+        # 奇数だと重複があるので最後の文字を削除する
+        word_first.slice!(-1,1) if word.size % 2 == 1
+    end
+
+    # 後半の判定
+    if word_last == ng_word_last 
+        word_last = "x" * word_half
+        count += 1
+    else
+        # ngでない場合は後半をそのまま出力したいが、
+        # 奇数だと重複があるので最初の文字を削除する
+        word_last.slice!(0,1) if word.size % 2 == 1
+    end
+
+    # 前半、後半両方ともNGの場合と両方OKの場合、片方だけOKの時の場合分け
+    if count == 2
+        puts "banned"
+    elsif count == 0
+        puts word
+    else
+        puts "#{word_first}#{word_last}"
+    end
+    
+end
+```
 
 
 # 新しい発見があった問題
