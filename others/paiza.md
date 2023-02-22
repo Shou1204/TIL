@@ -1305,3 +1305,40 @@ end
 ```
 - ポイントは行数の求め方と`slice!`を使った文字の抜き出し方
 - 文字列の場合は文字を取得するときにsliceをよく使う
+
+### [【全探索 1】高い寿司を食いたい！ Ruby編](https://paiza.jp/works/mondai/b_rank_new_level_up_problems/b_rank_new_level_up_problems__get_richer_sushi)
+
+- ポイントは一周すると最初に戻るというところ
+- その場合は`配列[添字%全体の数]`とすると配列外の番号になると最初に戻る
+
+```ruby
+n , k = gets.split(" ").map(&:to_i)
+
+# 最大の値を取得
+max = 0
+
+# 価格を配列として取得するため
+price = []
+n.times {|i| price << gets.to_i}
+
+# 2次配列にしたいので
+price = price.join(",")
+price = price.split(",").map(&:to_i)
+
+# n枚の皿全てを指定することで全ての組み合わせを試す
+(0..n).each do |i|
+    # k枚の合計値をsumとする
+    sum = 0
+
+    # k枚の皿を合計する
+    # k枚なのでkは含めず
+    (0...k).each do |j|
+        # 最大のポイント (i+j)でnを超えてしまった場合は配列の最初を取得
+        sum += price[(i+j)%n]
+    end
+    # 合計が現在までの最大以上なら入れ替える
+    max = [max,sum].max
+end
+# 全ての組み合わせを試した結果の最大値を出力
+puts max
+```
