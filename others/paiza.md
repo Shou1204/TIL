@@ -1055,6 +1055,35 @@ puts total
 - 連続で男の子がいた場合をどう定義するかで迷って、時間がかかる
 - カウンターを使うのが一番考えやすいか？
 
+改良版
+- include?を使えばもっと簡単だった
+```ruby
+n,m,k = gets.split(" ").map(&:to_i)
+boys =[]
+m.times {|i| boys << gets.to_i}
+# 男の子にあたるとカウンターをたす
+count = 0
+# あめの数
+total = 0
+
+(1..n).each do |home|
+
+    # 今の家に男の子がいるかどうか判定
+    if boys.include?(home)
+        # いれば連続カウンターを足す
+        count += 1
+        # 連続k回ならそこでストップしてあめの数を出力
+        return puts total if count == k
+    else
+        # いなければあめを足して、連続カウンターリセット
+        total += 1 
+        count = 0
+    end
+    
+end
+puts total
+```
+
 
 
 # 新しい発見があった問題
