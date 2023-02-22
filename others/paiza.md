@@ -873,6 +873,35 @@ dy, dx = gets.split(" ").map(&:to_i)
 puts (h * dx).abs + (w * dy).abs - (dx * dy).abs
 ```
 
+### [C105:カードのスコア](https://paiza.jp/works/challenges/517/page/result)
+
+```ruby
+n = gets.to_i
+
+# 数字を取得するが、昇順にソートすること
+num = gets.split(" ").map(&:to_i).sort
+
+# 合計値
+total = 0
+
+# 配列のインデックスを表現
+count = 0
+
+
+num.each do |i|
+    # 次の数字が今の数字より1大きいかどうかを判定（先にソートが絶対に必要！）
+    # 連番でなければ、今の数字でブロックが終了するので今の数字を合計値に足す
+    if i + 1 != num[count + 1]
+        total += i
+    end
+    # インデックが１増える
+    count += 1
+end
+
+# 合計値を表示
+puts total
+```
+
 # 苦戦したもの
 ### [C026:ウサギと人参](https://paiza.jp/challenges/104/retry_result/fc2a11b179815c59e673ceb4bb4a9636)
 ```
