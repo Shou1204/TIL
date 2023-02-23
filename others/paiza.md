@@ -1641,3 +1641,24 @@ total = 0
     puts total % m
 end
 ```
+
+### [【シミュレーション 2】perfuct shuffle Ruby編](https://paiza.jp/works/mondai/b_rank_new_level_up_problems/b_rank_new_level_up_problems__perfect_shuffle)
+
+```ruby
+n = gets.to_i
+cards = []
+("S_1".."S_13").each {|i| cards << i}
+("H_1".."H_13").each {|i| cards << i}
+("D_1".."D_13").each {|i| cards << i}
+("C_1".."C_13").each {|i| cards << i}
+n.times do |i|
+    up = cards.shift(26)
+    down = cards    
+    cards = []
+    (0..25).each do|j|
+        cards << up[j]
+        cards << down[j]
+    end
+end
+puts cards
+```
