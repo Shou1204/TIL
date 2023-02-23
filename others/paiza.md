@@ -1279,6 +1279,106 @@ n.times do |i|
 end
 ```
 
+### [B128:簡易的二次元バーコード](https://paiza.jp/works/challenges/612/retry?tk=49d1f494a31c2edbc35ac53fdfa6469d)]
+- j == 0の時の条件を見落としてBランクならずだった最悪の思い出
+- かなりがむしゃら感がある。。
+```ruby
+n = gets.chomp.split("").map(&:to_i)
+row = n.size / 3
+array = Array.new(n.size).map{Array.new(9, ".")}
+slice_array =[]
+new_array = []
+row.times do |t|
+    num = n.slice!(0,3)
+    slice_array = array.slice!(0,3)
+    num.each_with_index do |j,index|
+        k = 0
+        if j >= 7
+            k = 2
+            slice_array[0][0 + (index ) * 3..0 + (index ) * 3+2] = ["#", "#", "#"]
+            slice_array[1][0 + (index ) * 3..0 + (index ) * 3+2] = ["#", "#", "#"]
+        elsif j >= 4
+            slice_array[0][0 + (index ) * 3..0 + (index ) * 3+2] = ["#","#","#"]
+            k = 1
+        end
+        
+        if j%3 == 1
+            slice_array[k][0 + (index ) * 3]  = "#"
+        elsif j%3 == 2
+            slice_array[k][0 + (index ) * 3]  = "#"
+            slice_array[k][1 + (index ) * 3]  = "#"
+        elsif j%3 == 0 && j != 0
+            slice_array[k][0 + (index ) * 3]  = "#"
+            slice_array[k][1 + (index ) * 3]  = "#"
+            slice_array[k][2 + (index ) * 3]  = "#"
+        end
+    end
+    new_array += slice_array
+end
+new_array.each do |i|
+    puts i.join
+end
+```
+### [B107:カードシャッフル](https://paiza.jp/works/challenges/525/page/result)
+```
+あなたは、N 枚のカードをシャッフルするプログラムを実装することにしました。
+
+N 枚のカードにはそれぞれ 1 から N までの整数が 1 つ、重複なく書いてあります。これらのカードは最初、整数 i (1 ≦ i ≦ N) が書かれているカードは上から i 番目に並んでいます。つまり、1 が書かれたカードが一番上に、2 が書かれたカードが上から二番目に、...、N が書かれたカードが一番下になるように重ねられています。
+
+今回は以下の方法でカードをシャッフルをします。重ねられたカードを上から M 枚ごとのセットに分けます。ただし、一番下のセットが M 枚未満の場合は M 枚未満のまま、 1 つのセットとします。上から i 番目 (1 ≦ i ≦ M) のセットが下から i 番目のセットにくるように並び替えます。すなわち、それぞれのセットに分けたあと、一番上のセットが一番下、上から二番目のセットが下から二番目、...、一番下のセットが一番上、になるように並び替えます。
+
+この操作を 1 回のシャッフルとします。もう一度シャッフルする際は、前回のシャッフルされた状態から同じ動作を繰り返します。
+K 回シャッフルしたあとのカードの順番を出力して下さい。
+
+入力例 1 は以下のようになります。
+N = 9 なので、カードは 9 枚あります。
+```
+- Bランク合格の記念すべき問題
+```ruby
+n,m,k = gets.split(" ").map(&:to_i)
+
+# nまでの連続した数字の配列を作成
+num = []
+(1..n).each {|i| num << i }
+
+# 配列を移し替えるための入れ物が必要なので作成
+# timesの中でも定義してるが最後に出力したいので、、、
+set_num = []
+
+# 一回目以外は2次配列を一時配列に直す必要があるので、一回めかどうかを判断
+count = 0
+k.times do |i|
+    # 2回目以降にset_numを初期化するため
+    set_num = []
+
+    # セットを組み直すには、1次配列にする必要がある
+    num = num.flatten if count > 0
+
+    # 1次配列をm個ずつの2次配列にする
+    num.each_slice(m){|i| set_num << i}
+
+    # m個ずつの2次配列をセットごと逆順にする
+    set_num = set_num.reverse
+
+    # set_numを初期化したいが、値を無くすわけにいかないのでコピー
+    # もっといい方法はないものか？
+    num = set_num
+
+    # 1回目を過ぎたら足す
+    count += 1
+end
+puts set_num
+```
+
+
+
+
+
+
+
+
+
+
 
 # 新しい発見があった問題
 
