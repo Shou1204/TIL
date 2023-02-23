@@ -46,8 +46,6 @@ gets.to_i
 gets.to_f #.to_iでは整数になる
 ```
 
-
-
 ---
 
 # 文字列
@@ -62,7 +60,7 @@ vowels = "aiueoAIUEO"
     s.each_char do |char|
         result << char unless vowels.include?(char)
     end
-````
+```
 
 ## 文字列の置き換え
 
@@ -115,8 +113,6 @@ p array.slice(-1)
 p "あいうえお".reverse
 # => "おえういあ"
 ```
-
-
 
 ### 約数を抜き出す
 
@@ -177,6 +173,21 @@ puts string.count("道")
 
 一方、"..." は範囲オブジェクトを表す演算子で、指定された範囲外の整数を生成することができます。例えば、1...10 は 1 から 9 までの整数を含む配列を生成します。
 
+### 文字列を一文字ずつ抜き出して繰り返す（each_char メソッド）
+
+- with_index メソッドと組み合わせることもできる
+- 文字列限定
+
+```ruby
+"hello世界".each_char {|c| print c, ' ' }
+# => h e l l o 世 界
+
+"hello世界".each_char.with_index do |c,i|
+  print c," "
+end
+# => h e l l o 世 界
+```
+
 # 表示
 
 ## puts と　 print 　の違い
@@ -187,14 +198,15 @@ puts string.count("道")
 puts は　改行あり
 print は　改行なし
 
-
 # 演算子
 
 ### 条件演算子
+
 ```ruby
 条件式 ? 式1 : 式2
 ```
-この演算子の意味は、条件式が真であれば 式1 を評価し、偽であれば 式2 を評価する、というものです。
+
+この演算子の意味は、条件式が真であれば 式 1 を評価し、偽であれば 式 2 を評価する、というものです。
 
 ```ruby
 result = 80
@@ -212,4 +224,5 @@ end
 p flag
 # => "合格"
 ```
+
 - コードを短く書くことができる
