@@ -999,6 +999,31 @@ n.times do |i|
 end
 puts "#{int_1} #{int_2}" # それぞれの変数を出力
 ```
+### [C030:白にするか黒にするか](https://paiza.jp/en_try/challenges/121/page/result)
+
+```ruby
+h,w = gets.split(" ").map(&:to_i)
+
+h.times do |i|
+    # 一行分読み込む
+    int = gets.split(" ").map(&:to_i)
+
+    # 読んだ配列の何文字目かを表す変数
+    k = 0
+    int.each do |j|
+        # 128以上かどうか
+        if j >= 128
+            # intのk列目を変える
+            int[k] = 1
+         else
+             int[k] = 0
+        end
+        k += 1 # 処理が終わったら次の列に
+    end 
+    # 出力、列数が変わるので式代入は使わない
+    puts int.join(" ")
+end
+```
 
 # 苦戦したもの
 ### [C026:ウサギと人参](https://paiza.jp/challenges/104/retry_result/fc2a11b179815c59e673ceb4bb4a9636)
