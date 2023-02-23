@@ -967,6 +967,39 @@ else
 end
 ```
 
+### [C024:ミニ・コンピュータ](https://paiza.jp/works/challenges/91/page/result)
+
+```ruby
+n = gets.to_i
+# 変数1、変数2を初期化しておく
+int_1 = 0
+int_2 = 0
+
+n.times do |i|
+    # 文字列と数字が混じっているので,変換はしない
+    str = gets.chomp.split(" ")
+
+    # わかりやすいので頭の命令だけ分ける
+    action = str.shift
+
+    # SETの場合
+    if action == "SET"
+       if str[0] == "1" # 文字列のままなので""を忘れないように
+           int_1 = str[1].to_i # 計算する必要があるので整数に
+        else
+            int_2 = str[1].to_i
+        end
+    # ADDの場合
+    elsif action == "ADD"
+        int_2 = (int_1 + str[0].to_i)
+    else
+    # SUBの場合
+        int_2 = (int_1 - str[0].to_i)
+    end
+end
+puts "#{int_1} #{int_2}" # それぞれの変数を出力
+```
+
 # 苦戦したもの
 ### [C026:ウサギと人参](https://paiza.jp/challenges/104/retry_result/fc2a11b179815c59e673ceb4bb4a9636)
 ```
