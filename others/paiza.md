@@ -1456,3 +1456,49 @@ numbers = ["1","2","3","4","5","6","7","8","9","0"]
 end
 ```
 
+### [【文字列 2】super long int (paizaランク C 相当)](https://paiza.jp/works/mondai/b_rank_new_level_up_problems/b_rank_new_level_up_problems__super_long_int/edit?language_uid=ruby&t=ffe87705653d614c5e713e60482cad27)
+
+```
+整数型が用意されている言語では、int や long int といった型を用いて数値を保持することが多いです。
+しかし、これらの型は扱える値の上限が 10^10 程度にされていることが多いです。
+そこで paiza 君は新たに 32 桁の数字を受け取ることができる型 super long int を定義することにしました。
+また super long int 型の値 X から int 型のハッシュ値を求める関数 hash(X) を次の通り定義しました。
+hash(X) = X を 8 桁ずつに区切って得られる 4 つの 8 桁の数字の和
+
+super long int 型の値 X が与えられるので、hash(X) の値を求めてください。
+```
+```
+入力例1
+11111111111111111111111111111111
+
+出力例1
+44444444
+```
+- 簡単に解けたが、意図した解き方ではない気がする
+- 桁数が増えれば通用しなくなりそう
+```ruby
+int = gets.to_s
+int_1 = int.slice!(0,8).to_i
+int_2 = int.slice!(0,8).to_i
+int_3 = int.slice!(0,8).to_i
+int_4 = int.slice!(0,8).to_i
+puts int_1 + int_2 + int_3 + int_4
+```
+- 模範解答
+- 無駄がない、綺麗な解き方
+- こういうコードを直ぐに思いつきたい
+```ruby
+# 文字列で読み込む。数字だと文字列操作ができないので
+x = gets.chomp
+
+# 合計値
+ans = 0
+
+# 4個の数の和なので一つずつ和を足していく
+4.times do |i|
+  # 8 * i 列目 から ８文字読み込んで数字に変換、合計値に足す
+  ans += x[8*i, 8].to_i
+end
+
+puts ans
+```
