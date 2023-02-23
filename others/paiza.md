@@ -1563,3 +1563,48 @@ end
 # 結果を表示、どれにも当てはまらなければ初期値になる
 puts result
 ```
+
+### [【配列 1】平面で計算 Ruby編](https://paiza.jp/works/mondai/b_rank_new_level_up_problems/b_rank_new_level_up_problems__calculate_in_two_dimensions)
+
+```
+N × N の二次元配列 A が与えられるので、N 要素からなる縦列・横列・斜め列の和のうち、最大のものを求めてください。
+```
+- ポイントは斜めの合計をきちんと取得できるかどうか
+```ruby
+n = gets.to_i
+# 最大値
+max = 0
+# 数字の二次元配列を定義
+int =[]
+
+# 配列を取得しながら、横だけは計算
+n.times do |i|
+    yoko = gets.split(" ").map(&:to_i)
+    int << yoko
+    # 横の合計値が今の最大値より上なら最大値にする
+    max = yoko.sum if max < yoko.sum
+end
+
+# 縦の計算
+n.times do |i| # iは縦
+    total = 0 # 縦の合計値
+    n.times do |j|
+        total += int[j][i] # jは横
+    end
+    max = total if max < total
+end
+
+# 最大値の計算はメソッド外なので外で定義
+r_down = 0
+l_down = 0
+n.times do |i|
+    # 左上から右下
+    r_down += int[i][i]
+    # 右上から左下
+    l_down += int[i][n-1-i] # 範囲外を参照しないように注意
+end
+# 両斜めの大きい方が最大値より多いかどうか、大きければ入れ替え
+max = [r_down,l_down].max if max < [r_down,l_down].max
+
+puts max
+```
