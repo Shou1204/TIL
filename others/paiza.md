@@ -1502,3 +1502,64 @@ end
 
 puts ans
 ```
+
+### [【文字列 3】p4!2@ Ruby編](https://paiza.jp/works/mondai/b_rank_new_level_up_problems/b_rank_new_level_up_problems__leet_paiza)
+
+```
+英単語に含まれるアルファベットの一部を形の似た数字や記号で置き換えることを Leet といいます。Leet はパスワードやユーザー名の作成の際に便利な手法の一つです。
+
+paiza では、エゴサーチを強化するためにツイートの中に Leet 表記された paiza が含まれているかを判定するプログラムを作成することになりました。
+ツイートの文章 S が与えられるので、ツイートに "paiza" が含まれる場合は "paiza", "paiza" が含まれず Leet 表記された "paiza" が含まれる場合は "leet", どちらも含まれない場合は "nothing" と出力してください。
+
+なお、"paiza" の leet 文字列は、"paiza" について以下の置き換えを 1 回以上おこなうことで得られる文字列をさすものとします。
+
+・a -> 4 または a -> @
+・i -> 1 または i -> !
+・z -> 2
+```
+```
+入力例1
+leetp@1za
+
+出力例1
+leet
+```
+- ポイント
+- paizaという5文字それぞれを判定するため`leet_str`という"p""a""i""z""a"それぞれの順番と対応する配列を作り、`each_char`メソッドに`.with_indexメソッド`と組み合わせてそれぞれが変換文字に対応しているか確認している
+  
+```ruby
+n = gets.chomp
+
+# 最終的にどれも当てはまらないとnothingになるので入れておく
+result = "nothing"
+
+# この問題のポイントでそれぞれ"paiza"の順番通りに変換できる文字を入れる
+# each_char.with_indexとの組み合わせを見据えている
+leet_str = ["p", "4a@","i1!","z2","4a@"]
+
+# 5文字を抜き出すので-5にしないと最後文字数が少なくなる
+(0..n.size-5).each do |i|
+    # leet文字と5文字ともあっているかを数えるカウンター
+    count = 0
+    word = n[i,5] # 5文字抜き出す
+
+    # 文字列から１文字ずつ取り出して,0から番号を振る
+    # これがleet_strと対応している
+    word.each_char.with_index do |c,i|
+        if leet_str[i].include?(c)
+            count += 1
+
+            # 5文字ともあっているとleet文字だと確認できる
+            result = "leet" if count == 5
+        end
+    end
+end
+
+# paizaの文字列があるか確認する
+# leetより先に書くと上書きしてしまうので最後に記述
+if n.include?("paiza")
+    result = "paiza"
+end
+# 結果を表示、どれにも当てはまらなければ初期値になる
+puts result
+```
