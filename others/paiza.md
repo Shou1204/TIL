@@ -1040,6 +1040,47 @@ h.times do |i|
     puts int.join(" ")
 end
 ```
+### [C028:単語テストの採点](https://paiza.jp/works/challenges/116/page/result)
+```ruby
+n = gets.to_i
+
+# 合計ポイント
+total = 0
+n.times do |i|
+    true_str, false_str = gets.chomp.split(" ")
+     
+     # まず、長さが合っているかどうか
+     # 会っていなれば0点確定のため
+     if true_str.size == false_str.size
+
+        # 何文字合っているかのカウンター
+        count = 0
+        
+        # 一文字ずつ合っているか確認して合ってればカウンターをたす
+        true_str.size.times do |j|
+            count += 1 if true_str[j] == false_str[j]
+        end
+        
+        # カウンターが文字数なら完全一致ということ
+        # 完全一致の場合
+        if count == true_str.size
+            total += 2
+        # 一文字違いの場合
+        elsif count == true_str.size - 1
+            total += 1
+        end
+        
+    end
+end
+# ポイントを出力
+puts total
+```
+
+
+
+
+
+
 
 # 苦戦したもの
 ### [C026:ウサギと人参](https://paiza.jp/challenges/104/retry_result/fc2a11b179815c59e673ceb4bb4a9636)
