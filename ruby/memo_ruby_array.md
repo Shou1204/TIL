@@ -477,3 +477,31 @@ end
 # =>4 , 5, nil
 
 ```
+
+## 2次配列を1次配列にする(flattenメソッド)
+`配列.flatten`
+
+2次を1次にする状況としては
+
+- `each_slice`を使用する場合など
+
+```ruby
+# 2次配列を1次配列に
+array = [1, [2, [3, [4, 5]], 6], 7]
+flat_array = array.flatten
+p flat_array
+# => [1, 2, 3, 4, 5, 6, 7]
+
+# 1次配列に使ってもエラーは出ない
+array = [1, 2, 3, 4, 5]
+flat_array = array.flatten
+p flat_array
+# => [1, 2, 3, 4, 5]
+
+# 破壊的メソッドもある
+array = [1, [2, [3, [4, 5]], 6], 7]
+array.flatten!
+p array
+# =>[1, 2, 3, 4, 5, 6, 7]
+```
+
