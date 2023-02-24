@@ -1378,7 +1378,22 @@ end
 puts set_num
 ```
 
+### [C122:【2022年Xmas問題】プレゼントのセール](https://paiza.jp/challenges/595/retry_result/1319ab8fff68932a7c057b4390d434d2)
 
+- コード自体に難しいところはないが問題文を読み違えて不正解であった
+- 無料枠は一回限りの適用なのでした・・・
+- Bランク合格したのにこんなとこでつまづくとは
+
+```ruby
+n, x, y = gets.split(" ").map(&:to_i)
+items = []
+n.times { |i| items << gets.to_i }
+if n / x >= 1
+    items = items.sort
+    items.shift(y)
+end
+p items.sum
+```
 
 
 
@@ -1446,6 +1461,8 @@ minute = format('%02d', minute)
 # 出力する
 puts "#{month}/#{day} #{hour}:#{minute}"
 ```
+
+
 
 ### [C074:【クロニクルコラボ問題】文章サイズ変更](https://paiza.jp/career/challenges/357/page/result)
 
