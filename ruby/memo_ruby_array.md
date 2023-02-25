@@ -183,12 +183,35 @@ team.push("勇者")
 ```
 
 ## 削除
-### 条件で削除
-- delete_at メソッド
+### 要素の中身を指定して削除(delete)
 
 ```ruby
-team = ["勇者","魔法使い"]
-team.delete_at(0)
+# 数字を削除
+numbers = [1, 2, 3, 4, 5]
+numbers.delete(3)
+p numbers #=> [1, 2, 4, 5]
+
+# 文字列を削除
+fruits = ["apple", "banana", "orange", "apple"]
+fruits.delete("apple")
+p fruits #=> ["banana", "orange"]
+
+# 2次配列
+array = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+array.delete([4, 5, 6])
+p array #=> [[1, 2, 3], [7, 8, 9]]
+```
+
+### インデックスを指定して削除(delete at)
+```ruby
+array = ["foo", "bar", "baz"]
+array.delete_at(1)
+puts array.inspect  #=> ["foo", "baz"]
+
+# 2次配列の場合
+array = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+array.delete_at(1)
+p array #=> [[1, 2, 3], [7, 8, 9]]
 ```
 
 ## 取得
