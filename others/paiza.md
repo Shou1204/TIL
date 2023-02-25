@@ -1436,6 +1436,37 @@ end
 p items.sum
 ```
 
+### [B117:回る教習車](https://paiza.jp/en_try/challenges/572/page/result)
+
+- かなり考え方に苦労した
+- 
+```ruby
+n = gets.to_i
+car_num = []
+n.times { |i| car_num << gets.to_i} # n個の要素の配列を作成
+
+count = 0 # 周回数
+exit_num = 0 # 出口に到達した最後の車の番号
+
+# 出口に出る時は週に数えないという条件なので最後より前の番号が出るまで繰り返す
+until exit_num >= n - 1
+    # "1"からしか出れないのでexit_numの初期値は0に
+    car_num.each do |j|
+        # 配列を順番に見ていって、1から順番に当てはめてexit_numに代入していく
+        if j == exit_num + 1
+            exit_num = j
+        end
+        # 周回0で全て出口に出ていく場合もあるため
+        return puts count if exit_num == n
+    end
+    # eachが終わると一周したということなので周回数+1
+    count += 1
+end
+puts count
+```
+
+
+
 
 
 
