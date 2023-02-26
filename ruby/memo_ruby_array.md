@@ -410,6 +410,24 @@ puts ["h", "e", "llo"].include?("llo") #=> true
 puts ["h", "e", "llo"].include?("hell") #=> false
 ```
 
+### 配列aに配列bが含まれているか判定（all?メソッドとinclude?メソッド）
+- all?は、ブロックを使って配列の全ての要素が条件を満たすかどうかを判定するメソッド
+```ruby
+a = [2, 4, 6, 8, 10]
+puts a.all? { |num| num.even? }  # true
+
+b = [1, 3, 5, 7, 9]
+puts b.all? { |num| num.even? }  # false
+```
+```ruby
+# bの要素はaに全て含まれているか？を判定する
+
+a = [1, 2, 3, 4, 5]
+b = [2, 4, 5]
+
+result = b.all? { |elem| a.include?(elem) }
+puts result #=> true
+```
 
 ## 配列の並び替え（昇順）
 
@@ -534,6 +552,8 @@ p numbers3
 ```
 
 ## loop処理
+
+### 
 
 ### インデックスをつける
 - `each_with_index`メソッド
