@@ -51,6 +51,7 @@
     - [C037:アニメの日時](#c037アニメの日時)
     - [C074:【クロニクルコラボ問題】文章サイズ変更](#c074クロニクルコラボ問題文章サイズ変更)
     - [【全探索 1】高い寿司を食いたい！ Ruby編](#全探索-1高い寿司を食いたい-ruby編)
+    - [C079:カードを集める](#c079カードを集める)
   - [Bランクレベルアップ問題](#bランクレベルアップ問題)
     - [【文字列 1】疑似数字 Ruby編](#文字列-1疑似数字-ruby編)
     - [【文字列 2】super long int (paizaランク C 相当)](#文字列-2super-long-int-paizaランク-c-相当)
@@ -58,6 +59,7 @@
     - [【配列 1】平面で計算 Ruby編](#配列-1平面で計算-ruby編)
     - [計算 2】疑似乱数 (paizaランク C 相当)](#計算-2疑似乱数-paizaランク-c-相当)
     - [【シミュレーション 2】perfuct shuffle Ruby編](#シミュレーション-2perfuct-shuffle-ruby編)
+
 
 
 
@@ -1608,6 +1610,36 @@ end
 # 全ての組み合わせを試した結果の最大値を出力
 puts max
 ```
+
+### [C079:カードを集める](https://paiza.jp/works/challenges/381/page/result)
+
+- all?メソッドで配列の中に別の配列の要素が全て含まれているかを確認することができる
+  
+
+```ruby
+n , m = gets.split(" ").map(&:to_i)
+
+# 全種類の配列を作成
+all_kind = []
+(1..m).each { |i| all_kind << i }
+
+# 開けたカードを順番に処理
+count = 0
+num = []
+n.times do |i|
+    count += 1
+    num << gets.to_i
+    # 全種類があればtrueを返す
+    # all_kindを全ての要素がnumに含まれていればtrueになるという式
+    if all_kind.all? {|j| num.include?(j) }
+        return puts count
+    end
+end
+puts "unlucky"
+```
+
+
+
 
 ## Bランクレベルアップ問題
 
