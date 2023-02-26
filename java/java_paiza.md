@@ -28,6 +28,17 @@
   - [10:【補講】データ型について理解しよう](#10補講データ型について理解しよう)
   - [データ型の変換方法3つ](#データ型の変換方法3つ)
   - [11:【補講】税込み金額を計算する](#11補講税込み金額を計算する)
+- [Java入門編3: ループ処理を学ぶ](#java入門編3-ループ処理を学ぶ)
+  - [01:条件によるくり返し処理1 - while](#01条件によるくり返し処理1---while)
+  - [02:条件によるくり返し処理2 - while](#02条件によるくり返し処理2---while)
+  - [03:RPGの攻撃シーンを作る](#03rpgの攻撃シーンを作る)
+  - [04:0から4までを表示してみよう - for](#040から4までを表示してみよう---for)
+  - [05:繰り返しでHTMLを作成する](#05繰り返しでhtmlを作成する)
+  - [06:データの読み込み（標準入力）](#06データの読み込み標準入力)
+  - [07:データを読み込んでみよう - 標準入力](#07データを読み込んでみよう---標準入力)
+  - [08:複数データを読み込んでみよう](#08複数データを読み込んでみよう)
+  - [09:西暦年と平成年の対応表を作る](#09西暦年と平成年の対応表を作る)
+
 
 
 ### 02:メッセージの表示
@@ -446,4 +457,187 @@ Int と指定しているのに小数点以下が出るため
 // 対応策
 int amount = (int)(price / 100.0 * weight);
 //これで()の中が整数に変換されるのでエラーを回避できる
+```
+
+
+
+## Java入門編3: ループ処理を学ぶ
+
+### 01:条件によるくり返し処理1 - while
+- 指定された条件式が true の場合に繰り返し処理を行う
+```java
+    // カウンタ変数の初期化
+while (条件式) {
+    // 繰り返し実行したい処理
+    // カウンタ変数の更新
+}
+```
+
+- i が 10 以下の間、i の値を出力し、i の値を 1 ずつ増やしていく
+- i が 11 になると、条件式 i <= 10 が false になるため、while 文のループが終了します。
+```java
+int i = 1; // カウンタ変数の初期化
+while (i <= 10) { 
+    System.out.println(i); // 繰り返し実行したい処理
+    i++; // カウンタ変数の更新
+}
+```
+
+### 02:条件によるくり返し処理2 - while
+- whileの復習
+  
+### 03:RPGの攻撃シーンを作る
+- whileの基本と自己代入演算子の基本
+
+### 04:0から4までを表示してみよう - for
+- forの復習
+
+```java
+for (初期化式; 条件式; 更新式) {
+    // 反復処理を行う文
+}
+```
+```java
+// 1から5までの数字を表示する
+for (int i = 1; i <= 5; i++) {
+    System.out.println(i);
+}
+// 出力: 1 2 3 4 5
+
+// 配列の要素を1つずつ表示する
+int[] array = {1, 2, 3, 4, 5};
+for (int i = 0; i < array.length; i++) {
+    System.out.println(array[i]);
+}
+// 出力: 1 2 3 4 5
+
+// 文字列の各文字を1つずつ表示する
+String str = "Hello";
+for (int i = 0; i < str.length(); i++) {
+    System.out.println(str.charAt(i));
+}
+// 出力: H e l l o
+```
+
+### 05:繰り返しでHTMLを作成する
+
+- プルダウンの基本形
+```html
+<select name='age'>
+  <option>1才</option>
+  <option>2才</option>
+  <option>3才</option>
+</select>
+```
+
+```java
+// 年齢入力のプルダウン作成
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("<select name='age'>");
+        for(int i = 1; i <= 10; i++) {
+            System.out.println("<option>" + i + "歳</option>");
+        }
+        System.out.println("</select>");
+    }
+}
+```
+
+### 06:データの読み込み（標準入力）
+
+-  標準入力とは
+
+```
+LINUXなどのUnix系OSで用意されていた仕組みです。
+標準入力に対応するようにプログラムを作っておけば、プログラム実行時に、ファイルを読み込んだり、キーボードからデータを読み込んだり、パラメータを指定したりというように、入力先を切り替えることができます。
+```
+
+### 07:データを読み込んでみよう - 標準入力
+- 標準入力で受け取ったデータは数値ではなくテキストになる
+
+```java
+// 標準入力
+import java.util.*; //標準入力に必要なパッケージをインポート
+
+public class Main {
+    public static void main(String[] args) {
+
+        //Scannerクラスでscというインスタンスを作成
+        Scanner sc = new Scanner(System.in); 
+
+        // scから入力された整数をnextInt()で読みこむ
+        int line = sc.nextInt();
+S
+        System.out.println(line * 2);
+    }
+}
+```
+
+- 文字列入力、文字列出力の場合
+
+```java
+// 標準入力
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // 変数型はStringに！
+        String line = sc.next();
+        System.out.println(line);
+    }
+}
+```
+
+### 08:複数データを読み込んでみよう
+
+``` java
+// 標準入力とループ処理
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String data = sc.next();
+        System.out.println("hello " + data);
+    }
+}
+```
+
+```java
+// count回の文字列を読み込んでそのまま表示する
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int count = sc.nextInt();
+
+        String line;
+        for(int i = 0; i < count; i++) {
+            line = sc.next();
+            System.out.println(line);
+        }
+    }
+}
+```
+
+### 09:西暦年と平成年の対応表を作る
+
+```java
+// 西暦年と平成年の対応表を作る
+// 1989年から2016年までをループで出力
+// ループ内で、各西暦年を平成年に変換
+
+public class Main {
+    public static void main(String[] args) {
+        int seireki, heisei;
+        for (seireki = 1989; seireki <= 2016; seireki++) {
+            System.out.print("西暦" + seireki + "年は、");
+            heisei = seireki - 1988;
+            System.out.println("平成" + heisei + "年です。");
+        }
+    }
+}
 ```
