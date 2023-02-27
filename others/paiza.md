@@ -1615,7 +1615,6 @@ puts max
 
 - all?メソッドで配列の中に別の配列の要素が全て含まれているかを確認することができる
   
-
 ```ruby
 n , m = gets.split(" ").map(&:to_i)
 
@@ -1637,7 +1636,29 @@ n.times do |i|
 end
 puts "unlucky"
 ```
+- each と include?だけでも解ける
 
+```ruby
+n , m = gets.split(" ").map(&:to_i)
+
+# 全種類の配列を作成
+all_kind = []
+(1..m).each { |i| all_kind << i }
+
+# 開けたカードを順番に処理
+count = 0
+num = []
+n.times do |i|
+    count += 1
+    num << gets.to_i
+    k = 0
+    all_kind.each do |j|
+       k += 1 if num.include?(j)
+    end
+    return puts count if k == m
+end
+puts "unlucky"
+```
 
 
 
