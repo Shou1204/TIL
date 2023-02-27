@@ -641,3 +641,17 @@ public class Main {
     }
 }
 ```
+
+## Java入門編4:配列の基礎
+### 02:配列を作ろう
+- 配列を作成する
+
+```java
+String[] team = {"戦士", "忍者"};
+```
+
+- 配列を表示する
+```java
+System.out.println(team[0]);
+```
+
