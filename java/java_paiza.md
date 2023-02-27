@@ -648,6 +648,15 @@ public class Main {
 
 ```java
 String[] team = {"戦士", "忍者"};
+
+// 配列の宣言と初期化
+データ型[] 配列名 = new データ型[要素数];
+
+// 配列に値を代入
+配列名[インデックス番号] = 値;
+
+// 配列から値を取得
+データ型 変数名 = 配列名[インデックス番号];
 ```
 
 - 配列を表示する
@@ -655,3 +664,58 @@ String[] team = {"戦士", "忍者"};
 System.out.println(team[0]);
 ```
 
+### 03:配列の要素を取り出してみよう
+```java
+public class Main {
+    public static void main(String[] args) {
+        // 配列の作成
+        int[] numbers = new int[5];
+
+        // 配列に値を入れる
+        numbers[0] = 10;
+        numbers[1] = 20;
+        numbers[2] = 30;
+        numbers[3] = 40;
+        numbers[4] = 50;
+
+        // 配列から値を取り出す
+        System.out.println(numbers[2]); // 出力結果: 30
+    }
+}
+```
+
+### 04:ループで配列を処理しよう
+
+- 配列をloopで取り出す
+
+```java
+int[] numbers = {2, 4, 6, 8, 10};
+for (int i = 0; i < numbers.length; i++) {
+    System.out.println(numbers[i]);
+}
+```
+
+### 05:ループで配列を処理しよう2
+
+- 拡張for文
+
+配列やコレクションに格納されている要素を、先頭から順に1つずつ取り出して変数に代入し、繰り返し処理を行います。
+```java
+for (データ型 変数名 : 配列またはコレクション) {
+    // 処理
+}
+```
+
+```java
+//拡張for文を使用して配列の要素を取り出し、合計値を計算する。
+public class Main {
+    public static void main(String[] args) {
+        int[] numbers = {1, 2, 3, 4, 5};
+        int sum = 0;
+        for (int num : numbers) {
+            sum += num;
+        }
+        System.out.println("合計値：" + sum);
+    }
+}
+```
