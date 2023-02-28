@@ -719,3 +719,42 @@ public class Main {
     }
 }
 ```
+
+### 06:ArrayListクラスを使おう
+
+```java
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        // 整数のリストを作成
+        ArrayList<Integer> numbers = new ArrayList<Integer>();
+
+        // 要素を追加
+        numbers.add(5);
+        numbers.add(10);
+        numbers.add(15);
+
+        // 要素を取得して出力
+        System.out.println(numbers.get(0)); // 出力結果: 5
+        System.out.println(numbers.get(1)); // 出力結果: 10
+        System.out.println(numbers.get(2)); // 出力結果: 15
+    }
+}
+```
+
+- 更新する
+```java
+team.set(1, "忍者");
+```
+
+- 削除する
+
+```java
+team.remove(1);
+```
+
+- 要素数を確認する
+```java
+System.out.println(team.size());
+```
