@@ -101,3 +101,26 @@ public class Main {
     }
 }
 ```
+
+## [文字列と整数の組からの選択](https://paiza.jp/works/mondai/stdin_primer/java/stdin_primer__pair_data_boss/result?token=cc816b3577bd0988a213d70703eb878e)
+
+- 8番目の列を表示
+```java
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        
+        String[] num_1 = new String[n];
+        String[] num_2 = new String[n];
+        for(int i = 0; i < n; i++) {
+            num_1[i] = sc.next();
+            num_2[i] = sc.next();
+        }
+            System.out.println(num_1[7] + " " + num_2[7]);
+    
+    }
+}
+```
