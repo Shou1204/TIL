@@ -1,0 +1,80 @@
+# 配列についてのメモ
+
+
+- [配列についてのメモ](#配列についてのメモ)
+- [基本](#基本)
+  - [ArrayListクラスの追加、更新、削除](#arraylistクラスの追加更新削除)
+  - [拡張for文](#拡張for文)
+
+
+
+
+
+
+
+
+
+
+# 基本
+## ArrayListクラスの追加、更新、削除
+```java
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<String> myList = new ArrayList<>();
+        System.out.println("要素数：" + myList.size());  // 要素数：0
+        
+        // 要素の追加
+        myList.add("apple");
+        myList.add("banana");
+        myList.add("orange");
+        
+        System.out.println("要素数：" + myList.size());  // 要素数：3
+        
+        // 要素の更新
+        myList.set(1, "grape");
+        System.out.println(myList.get(1));  // grape
+        
+        // 要素の削除
+        myList.remove(0);
+        System.out.println("要素数：" + myList.size());  // 要素数：2
+        
+        // 全ての要素の出力
+        for (String fruit : myList) {
+            System.out.println(fruit);
+        }
+    }
+}
+
+// 要素数：0
+// 要素数：3
+// grape
+// 要素数：2
+// banana
+// orange
+
+```
+
+## 拡張for文
+
+配列やコレクションに格納されている要素を、先頭から順に1つずつ取り出して変数に代入し、繰り返し処理を行います。
+```java
+for (データ型 変数名 : 配列またはコレクション) {
+    // 処理
+}
+```
+
+```java
+//拡張for文を使用して配列の要素を取り出し、合計値を計算する。
+public class Main {
+    public static void main(String[] args) {
+        int[] numbers = {1, 2, 3, 4, 5};
+        int sum = 0;
+        for (int num : numbers) {
+            sum += num;
+        }
+        System.out.println("合計値：" + sum);
+    }
+}
+```
