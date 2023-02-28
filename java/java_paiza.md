@@ -1,4 +1,4 @@
-## Java 体験編 1: Java をはじめよう
+## Java 体験編
 
 - [Java 体験編 1: Java をはじめよう](#java-体験編-1-java-をはじめよう)
   - [02:メッセージの表示](#02メッセージの表示)
@@ -38,6 +38,15 @@
   - [07:データを読み込んでみよう - 標準入力](#07データを読み込んでみよう---標準入力)
   - [08:複数データを読み込んでみよう](#08複数データを読み込んでみよう)
   - [09:西暦年と平成年の対応表を作る](#09西暦年と平成年の対応表を作る)
+- [Java入門編4:配列の基礎](#java入門編4配列の基礎)
+  - [02:配列を作ろう](#02配列を作ろう)
+  - [03:配列の要素を取り出してみよう](#03配列の要素を取り出してみよう)
+  - [04:ループで配列を処理しよう](#04ループで配列を処理しよう)
+  - [05:ループで配列を処理しよう2](#05ループで配列を処理しよう2)
+  - [06:ArrayListクラスを使おう](#06arraylistクラスを使おう)
+  - [07:splitで文字列を分割しよう](#07splitで文字列を分割しよう)
+  - [08:配列に複数行データを読み込んでみよう](#08配列に複数行データを読み込んでみよう)
+  - [09:配列を使ったランダムくじ](#09配列を使ったランダムくじ)
 
 
 
@@ -758,3 +767,34 @@ team.remove(1);
 ```java
 System.out.println(team.size());
 ```
+
+
+### 07:splitで文字列を分割しよう
+
+- 文字列を","で区切って配列に格納する
+```java
+String[] array = data.split(",");
+```
+
+### 08:配列に複数行データを読み込んでみよう
+- 複数行データを配列に格納する
+```java
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ArrayList<String> array = new ArrayList<String>();
+
+        while (sc.hasNextLine()) {
+            String data = sc.nextLine();
+            array.add(data);
+        }
+
+        for(String str : array) {
+            System.out.println(str);
+        }
+    }
+}
+```
+
+### 09:配列を使ったランダムくじ
