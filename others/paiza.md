@@ -1080,7 +1080,33 @@ end
 # ポイントを出力
 puts total
 ```
+### [C034:先生の宿題](https://paiza.jp/works/challenges/146/page/result)
+- 式が "+" か "-" の2通りに "x" の位置がそれぞれ3通りなのでそれぞれ分岐させるだけ
 
+```ruby
+num = gets.chomp.split(" ")
+
+# 式が + の場合
+if num.include?("+")
+    if num[4] == "x"  # "=" の後が "x"の場合
+        result = num[0].to_i + num[2].to_i
+    elsif num[0] == "x"  # 一つ目の数字が "x"の場合
+        result = num[4].to_i - num[2].to_i
+    else
+        result = num[4].to_i - num[0].to_i
+    end
+# 式が - の場合
+else
+    if num[4] == "x" # "=" の後が "x"の場合
+        result = num[0].to_i - num[2].to_i
+    elsif num[0] == "x" # 一つ目の数字が "x"の場合
+        result = num[4].to_i + num[2].to_i
+    else
+        result = num[0].to_i - num[4].to_i
+    end
+end
+p result
+```
 
 
 
