@@ -1108,7 +1108,32 @@ end
 p result
 ```
 
+### [C059:パリティチェック](https://paiza.jp/works/challenges/287/page/result)
+- シンプルな問題でした
+```ruby
+n = gets.to_i
+num = []
+n.times { |i| num << gets.chomp.split("").map(&:to_i) }
 
+# 4桁と決まっているため直接指定
+(0..3).each do |i|
+    total = 0
+
+    # 列毎に1の数を足していく
+    num.each do |j|
+        if j[i] == 1 
+            total += 1
+        end
+    end
+
+    # 1の数が奇数かどうかを判定し、出力を変える
+    if total % 2 == 1
+        print 1 # 改行たくないのでprintを使う
+    else
+        print 0
+    end
+end
+```
 
 
 
