@@ -13,6 +13,7 @@
     - [要素の中身を指定して削除(delete)](#要素の中身を指定して削除delete)
     - [インデックスを指定して削除(delete at)](#インデックスを指定して削除delete-at)
   - [取得](#取得)
+    - [配列の先頭からa個の要素を取得(sliceメソッド)](#配列の先頭からa個の要素を取得sliceメソッド)
     - [条件で取得(select)](#条件で取得select)
     - [文字列を含んでいるものを取得する(include)](#文字列を含んでいるものを取得するinclude)
     - [積集合で複数の配列に共通しているものを取得する](#積集合で複数の配列に共通しているものを取得する)
@@ -238,6 +239,21 @@ p array #=> [[1, 2, 3], [7, 8, 9]]
 ```
 
 ## 取得
+
+
+### 配列の先頭からa個の要素を取得(sliceメソッド)
+```ruby
+my_array = [1, 2, 3, 4, 5]
+first_two = my_array.slice(0, 2)
+puts first_two.inspect #=> [1, 2]
+
+
+# sliceを使わなくてもできる
+my_array = [1, 2, 3, 4, 5]
+first_two = my_array[0, 2]
+puts first_two.inspect #=> [1, 2]
+```
+
 ### 条件で取得(select)
 - select do で条件を指定して取得する
 - selectの反対の作用をするrejectがある
