@@ -5,6 +5,8 @@
   - [スタック実装編 step 2](#スタック実装編-step-2)
   - [キュー実装編 step 1 ](#キュー実装編-step-1-)
   - [キュー実装編 step 2](#キュー実装編-step-2)
+  - [2 つのキュー](#2-つのキュー)
+
 
 
 
@@ -101,5 +103,39 @@ n.times do |i|
         puts stack.shift
     end
     puts stack.join(" ")
+end
+```
+
+## [2 つのキュー](https://paiza.jp/works/mondai/stack_queue/stack_queue__practice_step1/edit?language_uid=ruby)
+
+```
+Q 個のクエリが与えられます。 2 つのキューを用意したあと、 Q 個のクエリを順に処理してください。各クエリは、以下の 5 つのいずれかです。
+
+・ PUSH 1 X: 1 つ目のキューに数値 X を追加
+・ PUSH 2 X: 2 つ目のキューに数値 X を追加
+・ POP 1: 1 つ目のキューの先頭の要素を削除し、その値を出力
+・ POP 2: 2 つ目のキューの先頭の要素を削除し、その値を出力
+・ SIZE: 1 つ目のキュー、 2 つ目のキューに含まれる要素数をそれぞれ出力
+```
+
+```ruby
+n = gets.to_i
+stack_1 = []
+stack_2 = []
+n.times do |i|
+    command, a, b = gets.chomp.split(" ")
+    
+    if command == "1"
+        stack_1 << b if a == "1"
+        stack_2 << b if a == "2"
+    elsif command == "2"
+        if a == "1"
+            puts stack_1.shift
+        else
+            puts stack_2.shift
+        end
+    else
+        puts "#{stack_1.size} #{stack_2.size}"
+    end
 end
 ```
