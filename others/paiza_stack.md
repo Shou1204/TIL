@@ -4,6 +4,7 @@
   - [スタック実装編 step 1](#スタック実装編-step-1)
   - [スタック実装編 step 2](#スタック実装編-step-2)
   - [キュー実装編 step 1 ](#キュー実装編-step-1-)
+  - [キュー実装編 step 2](#キュー実装編-step-2)
 
 
 
@@ -73,6 +74,31 @@ n.times do |i|
         stack << a
     else
         stack.shift
+    end
+    puts stack.join(" ")
+end
+```
+
+## [キュー実装編 step 2](https://paiza.jp/works/mondai/stack_queue/stack_queue__queue_step2/edit?language_uid=ruby&t=f5d9d5e7e3811b01b108e615f7a3e0e9)
+
+```
+Q 個のクエリが与えられます。空の配列 A を用意したあと、 Q 個のクエリに応じて以下の 2 種類の処理をしてください。
+
+・ PUSH X: 配列 A の末尾に 文字 X を追加
+・ POP: 配列 A の先頭にある要素を出力し、削除
+
+各クエリの処理が終わったあと、配列 A の各要素の値を半角スペース区切りで出力してください。
+```
+```ruby
+n = gets.to_i
+stack = []
+n.times do |i|
+    command, a = gets.chomp.split(" ")
+    
+    if command == "1"
+        stack << a
+    else
+        puts stack.shift
     end
     puts stack.join(" ")
 end
