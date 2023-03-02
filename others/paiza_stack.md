@@ -2,6 +2,7 @@
 
 - [stack問題関連まとめ](#stack問題関連まとめ)
   - [スタック実装編 step 1](#スタック実装編-step-1)
+  - [スタック実装編 step 2](#スタック実装編-step-2)
 
 
 
@@ -23,6 +24,28 @@ n.times do |i|
     else
         # popならstackの最後尾の要素を削除
         stack.pop
+    end
+    puts stack.join(" ")
+end
+```
+
+## [スタック実装編 step 2](https://paiza.jp/works/mondai/stack_queue/stack_queue__stack_step2/edit?language_uid=ruby)
+
+```ruby
+n = gets.to_i
+
+# stackの配列を用意
+stack = []
+n.times do |i|
+
+    # コマンドと値を分けて定義
+    command, a = gets.chomp.split(" ")
+    
+    # pushならstackに値を加える
+    if command == "1"
+        stack << a
+    else
+        puts stack.pop
     end
     puts stack.join(" ")
 end
