@@ -136,6 +136,24 @@ p array_3
 
 
 ## 追加
+
+### n番目にxを追加する（insertメソッド)
+- 基本形
+- 
+```ruby
+array.insert(a, b)
+
+# a = 挿入したい位置
+# b = 追加する要素
+```
+```ruby
+array = [1, 2, 3, 4, 5]
+array.insert(2, "hello")
+p array #=> [1, 2, "hello", 3, 4, 5]
+
+```
+
+
 ### 同じインデックスの値をたす(便利！)
 ```ruby
 
