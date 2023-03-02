@@ -1,11 +1,13 @@
-# stack問題関連まとめ
+# stack,q問題関連まとめ
 
-- [stack問題関連まとめ](#stack問題関連まとめ)
+- [stack,q問題関連まとめ](#stackq問題関連まとめ)
   - [スタック実装編 step 1](#スタック実装編-step-1)
   - [スタック実装編 step 2](#スタック実装編-step-2)
   - [キュー実装編 step 1 ](#キュー実装編-step-1-)
   - [キュー実装編 step 2](#キュー実装編-step-2)
   - [2 つのキュー](#2-つのキュー)
+  - [最大の区間和 ](#最大の区間和-)
+
 
 
 
@@ -138,4 +140,42 @@ n.times do |i|
         puts "#{stack_1.size} #{stack_2.size}"
     end
 end
+```
+
+## [最大の区間和 ](https://paiza.jp/works/mondai/stack_queue/stack_queue__practice_step2/edit?language_uid=ruby&t=cfbf1bc22d5f99185064eab58ddaedd9)
+
+### 重要：計算量が多いときにスタックかキューを使うとタイムオーバーを回避できることがある
+- 考え方を覚えておくこと
+
+```N 個の要素からなる数列 A があります。 A に含まれる連続した X 個の要素の和の最大値とその区間の左端の値を出力してください。ただし、要素の和の最大となる区間が複数ある場合はそのうちもっとも先頭の値を出力してください。
+たとえば、 N = 4 , A = [2, 3, 4, 1] , X = 2 とします。連続した 2 個の要素の和が最大となる区間は A の 2 番目から 3 番目まで( 3 + 4 = 7 が最大値 )なので、最大値 7 とその区間の左端の値 3 を出力します。
+```
+```ruby
+n, x = gets.chomp.split.map(&:to_i)
+num = gets.chomp.split.map(&:to_i)
+
+left_num = num[0] # 区間の和が最大になる左端の値
+tmp_sum = 0 # 区間の和
+
+# 区間の和
+(0...x).each do |i|
+  tmp_sum += num[i]
+end
+max_sum = tmp_sum # 最初の区間最大値
+
+# チューブの左端を一つ押し出したら、右端から一つ入ってくるイメージ
+(0...n-x).each do |i|
+    # 左端を引く
+    tmp_sum -= num[i]
+    # 右端にたす
+    tmp_sum += num[i+x]
+    
+  if tmp_sum > max_sum
+    # 左端の数
+    left_num = num[i+1]
+    max_sum = tmp_sum
+  end
+end
+
+puts "#{max_sum} #{left_num}"
 ```
