@@ -10,6 +10,9 @@
     - [重要：計算量が多いときにスタックかキューを使うとタイムオーバーを回避できることがある](#重要計算量が多いときにスタックかキューを使うとタイムオーバーを回避できることがある)
   - [逆ポーランド記法](#逆ポーランド記法)
   - [括弧列](#括弧列)
+  - [エスカレーター](#エスカレーター)
+
+
 
 
 
@@ -261,5 +264,69 @@ if st.length == 0
   puts "Yes"
 else
   puts "No"
+end
+```
+
+
+## [エスカレーター](https://paiza.jp/works/mondai/stack_queue/stack_queue__practice_step5/edit?language_uid=ruby&t=4c45be6b542206412fef33d94889fa39)
+
+```
+paiza ビルにあるエスカレーターは全長 K メートルあり、 1 秒で 1 メートル進みます。
+また paiza ビルに勤める社員が N 人おり、 i 番目の社員は時刻 A_i にエスカレーターに乗ります。
+各社員がエスカレーターに乗った直後に、エスカレーター上にいる人数をそれぞれ答えてください。
+ただしある時刻にエスカレーターに乗る社員と降りる社員がいた場合、これは同時におこなわれます。
+```
+
+- 最初に自分で作ったプログラム
+- 答えは出せるがタイムアウトになるので対策が必要
+```ruby
+n, k= gets.split(" ").map(&:to_i)
+q = Array.new(k,0)
+num = gets.split(" ").map(&:to_i)
+num_max = num.max
+
+(1..num_max).each do |i|
+    if num.include?(i)
+        q << 1
+    else
+        q << 0
+    end
+    q.shift
+    p q.sum if num.include?(i)
+end
+```
+- 改良版
+- sumを使わないで、現在のエスカレーター上の人数をカウントしている
+```ruby
+n, k= gets.split(" ").map(&:to_i)
+time = gets.split(" ").map(&:to_i)
+que = []
+next_person = 0 # 次の乗客が乗る時間
+person_on_escalator = 0
+
+# 時間毎に判定、最後に乗る人の時間までとしている
+last_time = time.max
+(1..last_time).each do |i|
+
+    # 現在の時間iに乗る人がいるかを判定
+    if i == time[next_person]
+        que << 1 # 乗客一人を乗せる
+        person_on_escalator += 1 # エスカレータ上に一人乗せる
+    else
+        que << 0 # 乗客が乗らないことを示す
+    end
+    
+    # エスカレータに乗れる人数を上回ったら一人降りる
+    if que.size > k
+        # エスカレータから下す
+        # 乗ってなければ0なのでエスカレータ上の人数は変わらない
+        person_on_escalator -= que.shift
+    end
+    
+    # 現在の時間iに乗る人がいるかを判定
+    if i == time[next_person]
+        p person_on_escalator # エスカレータ上の人数を表示
+        next_person += 1 #+1することで次に乗る人の時間になる
+    end
 end
 ```
