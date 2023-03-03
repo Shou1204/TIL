@@ -7,6 +7,9 @@
   - [キュー実装編 step 2](#キュー実装編-step-2)
   - [2 つのキュー](#2-つのキュー)
   - [最大の区間和 ](#最大の区間和-)
+    - [重要：計算量が多いときにスタックかキューを使うとタイムオーバーを回避できることがある](#重要計算量が多いときにスタックかキューを使うとタイムオーバーを回避できることがある)
+  - [逆ポーランド記法](#逆ポーランド記法)
+
 
 
 
@@ -178,4 +181,41 @@ max_sum = tmp_sum # 最初の区間最大値
 end
 
 puts "#{max_sum} #{left_num}"
+```
+
+## [逆ポーランド記法](https://paiza.jp/works/mondai/stack_queue/stack_queue__practice_step3/edit?language_uid=ruby&t=13f4728929031cff9479f37d4bbbd995)
+
+```
+逆ポーランド記法 で書かれた数式が与えられます。
+この数式を計算した結果を出力してください。
+この問題は少し難しいですが、スタックを用いて解いてみましょう。
+```
+```ruby
+n = gets.chomp.to_i
+a = gets.chomp.split
+
+# stackの入れ物を作成
+st = []
+
+# 数式を１文字ずつ判定
+(0...n).each do |i|
+  # 記号だった場合、1つ前と2つ前の数字を取り出す
+  if a[i] == "+" || a[i] == "-"
+    num1 = st.pop().to_i
+    num2 = st.pop().to_i
+    # 1つ前と2つ前の数字を足して、格納し直す
+    if a[i] == "+"
+      st.push(num1 + num2)
+    # 1つ前から2つ前の数字を引いて、格納し直す
+    else
+      st.push(num2 - num1)
+    end
+  # 数字だった場合、そのまま格納する
+  else
+    st.push(a[i].to_i)
+  end
+end
+# stackを表示する
+# 正しく作動していれば、数字は一つ
+puts st
 ```
