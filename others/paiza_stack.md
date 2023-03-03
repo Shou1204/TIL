@@ -20,6 +20,7 @@
 
 
 
+
 ## [スタック実装編 step 1](https://paiza.jp/works/mondai/reviews/show/fa58002cb29af58334396d17350c2af9)
 
 ```ruby
@@ -329,4 +330,46 @@ last_time = time.max
         next_person += 1 #+1することで次に乗る人の時間になる
     end
 end
+```
+
+[箱とボール](https://paiza.jp/works/mondai/stack_queue/stack_queue__practice_step6/edit?language_uid=ruby&t=0241e994369587f0372c9f92a1bd562f)
+```
+幅 1 の筒状の箱に数値の書かれた直径 1 のボールを入れます。各ボールは同じ数値のボールが隣合ったときに結合し、数値が 2 倍になります。それぞれ A_i と書かれた N 個のボールがあり、順番に箱の底へ入れていきます。最終的な箱の中のようすを、箱の天井から順に出力してください。
+```
+```ruby
+n = gets.to_i
+boll = gets.split(" ").map(&:to_i)
+st = []
+
+boll.each do |i|
+    #最初の一回だけ無条件でstackに格納
+    if st.size == 0
+        st << i
+    # 最初でなければ
+    else
+        # stackの最後の数字と一緒なら2倍にして格納
+        if i == st[-1]
+            # まずstackの最後を削除して
+            st.pop
+            # stackに2倍した値を追加
+            st << i * 2
+
+            # stackに追加した2倍の値が前の値と同じなら処理は続く
+            while st[-1] == st[-2]
+                # その値を保存
+                num = st[-1]
+                # 同じ値2を削除
+                st.pop(2)
+                # stackに値の2倍を格納
+                st << num * 2
+            end
+
+        # 前の数字と異なればそのまま格納
+        else
+            st << i
+        end
+    end
+end
+# 天井のボールから出力する
+puts st.reverse
 ```
