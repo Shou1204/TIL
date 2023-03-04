@@ -38,6 +38,9 @@
     - [C024:ミニ・コンピュータ](#c024ミニコンピュータ)
     - [C030:白にするか黒にするか](#c030白にするか黒にするか)
     - [C028:単語テストの採点](#c028単語テストの採点)
+    - [C034:先生の宿題](#c034先生の宿題)
+    - [C059:パリティチェック](#c059パリティチェック)
+    - [C094:国民の税金](#c094国民の税金)
 - [苦戦したもの](#苦戦したもの)
     - [C026:ウサギと人参](#c026ウサギと人参)
     - [C096:夏休み](#c096夏休み)
@@ -59,6 +62,7 @@
     - [【配列 1】平面で計算 Ruby編](#配列-1平面で計算-ruby編)
     - [計算 2】疑似乱数 (paizaランク C 相当)](#計算-2疑似乱数-paizaランク-c-相当)
     - [【シミュレーション 2】perfuct shuffle Ruby編](#シミュレーション-2perfuct-shuffle-ruby編)
+
 
 
 
@@ -1135,6 +1139,38 @@ n.times { |i| num << gets.chomp.split("").map(&:to_i) }
 end
 ```
 
+### [C094:国民の税金](https://paiza.jp/works/challenges/461/page/result)
+
+- 税率が3段階なので、3つ条件を別々に作成
+- 一回ずつのtaxの計算に小数点以下が出ないようにしている
+- 
+```ruby
+n = gets.to_i
+tax = 0
+n.times do |i|
+    income = gets.to_i
+        if 100000 < income
+            if income > 750000
+                tax += (750000 - 100000) / 10
+            else
+                tax += (income - 100000) / 10
+            end
+        end
+        
+        if 750000 < income
+            if income > 1500000
+                tax += (1500000 - 750000) * 2 / 10
+            else
+                tax += (income - 750000) * 2 / 10
+            end
+        end
+        
+        if 1500000 < income
+            tax += (income - 1500000) * 4 / 10
+        end
+end
+puts tax
+```
 
 
 
