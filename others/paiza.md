@@ -1207,8 +1207,36 @@ end
 puts total # 料金の合計
 ```
 
+### [C092:工場のベルトコンベア](https://paiza.jp/works/challenges/447/page/result)
 
+- キューの考え方で解く
+```ruby
+n, a, b = gets.split(" ").map(&:to_i)
 
+# それぞれの配列を用意
+signal = gets.chomp.split("") # 信号機
+belt_a = gets.chomp.split("") # ベルトコンベアA
+belt_b = gets.chomp.split("") # ベルトコンベアB
+
+# 信号機毎に方向が合っているか確認する
+(0...n).each do |i|
+
+    # Aが合っているか
+    # 合っていれば先頭を削除
+    if signal[i] == belt_a[0]
+        belt_a.shift
+    end
+    
+    # Bが合っているか
+    # 合っていれば先頭を削除
+    if signal[i] == belt_b[0]
+        belt_b.shift
+    end
+end
+
+# それぞれの要素の数を出力
+puts "#{belt_a.size} #{belt_b.size}"
+```
 
 
 
