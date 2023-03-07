@@ -1624,8 +1624,26 @@ end
 puts count
 ```
 
+### [C091:みかんの仕分け](https://paiza.jp/works/challenges/441/retry)
 
 
+```ruby
+n , m = gets.split(" ").map(&:to_i)
+
+(0...m).each do |i|
+    s = gets.to_i
+    division = s / n
+    amari = s % n
+
+    if division == 0
+        division = 1
+    elsif amari * 2 >= n
+        division += 1
+    end
+    
+puts division * n
+end
+```
 
 
 
