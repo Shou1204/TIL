@@ -14,6 +14,7 @@
   - [区間内の個数](#区間内の個数)
     - [区間内の個数 1](#区間内の個数-1)
     - [区間内の個数 3](#区間内の個数-3)
+    - [区間内の個数 4](#区間内の個数-4)
 
 
 
@@ -308,6 +309,26 @@ p b[8] - b[2]
 
 ```ruby
 x,y = gets.split(" ").map(&:to_i)
+s = gets.split(" ").map(&:to_i)
+
+a = Array.new(y+1,0)
+b = Array.new(y+2,0)
+
+(0...y+1).each do |i|
+        a[i] = 1  if s[i].to_i % 2 == 0
+end
+
+(0...y+2).each do |i|
+    b[i+1] = b[i].to_i + a[i].to_i
+end
+
+p b[y+1] - b[x]
+```
+
+### [区間内の個数 4](https://paiza.jp/works/mondai/prefix_sum_problems/prefix_sum_problems__section_count_boss)
+
+```ruby
+n,x,y = gets.split(" ").map(&:to_i)
 s = gets.split(" ").map(&:to_i)
 
 a = Array.new(y+1,0)
