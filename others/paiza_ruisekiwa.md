@@ -137,3 +137,14 @@ s = Array.new(11, 0)
 end
 puts s[8] - s[2]
 ```
+
+### [区間の和 2](https://paiza.jp/works/mondai/prefix_sum_problems/prefix_sum_problems__section_sum_step2)
+
+```ruby
+s = gets.split(" ").map(&:to_i)
+a = Array.new(11,0)
+(0..11).each do |i|
+    a[i+1] = a[i].to_i + s[i].to_i
+end
+puts a[7+1] - a[2]
+```
