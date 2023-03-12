@@ -8,6 +8,10 @@
     - [区間の和 3](#区間の和-3)
     - [区間の和 4](#区間の和-4)
     - [連続する N 個の和の最大値](#連続する-n-個の和の最大値)
+    - [連続する N 個の和の最大値 2](#連続する-n-個の和の最大値-2)
+    - [連続する N 個の和の最大値 3](#連続する-n-個の和の最大値-3)
+    - [ 連続する N 個の和の最大値 4](#-連続する-n-個の和の最大値-4)
+
 
 
 
@@ -229,5 +233,24 @@ end
 (0..n - 3).each do |i|
         max = [max, a[i+3] - a[i]].max
 end
+puts max
+```
+
+### [ 連続する N 個の和の最大値 4](https://paiza.jp/works/mondai/prefix_sum_problems/prefix_sum_problems__sum_max_boss)
+
+```ruby
+n, k = gets.split(" ").map(&:to_i)
+s = gets.split(" ").map(&:to_i)
+a = Array.new(n+1,0)
+
+(0...n).each do |i|
+    a[i+1] = a[i] + s[i]
+end
+
+max = 0
+(0..n-k).each do |i|
+    max = [max, a[i+k] - a[i]].max
+end
+
 puts max
 ```
