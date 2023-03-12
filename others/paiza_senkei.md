@@ -1,10 +1,11 @@
 # paiza線型探索
-
 - [paiza線型探索](#paiza線型探索)
   - [【指定された値の探索】指定された値の位置 3](#指定された値の探索指定された値の位置-3)
   - [点と点の距離](#点と点の距離)
   - [長方形に含まれる点 Ruby編](#長方形に含まれる点-ruby編)
   - [成績優秀者の列挙](#成績優秀者の列挙)
+  - [【特殊な探索】 成績優秀者の列挙 ](#特殊な探索-成績優秀者の列挙-)
+
 
 
 
@@ -84,6 +85,24 @@ success = []
 
 student.each do |x,y|
     if y.to_i >= border
+        success << x
+    end
+end
+puts success
+```
+
+## [【特殊な探索】 成績優秀者の列挙 ](https://paiza.jp/works/mondai/sequence_search_problems/sequence_search_problems_search_condition_boss)
+
+```ruby
+n = gets.to_i
+student = []
+(0...n).each { |i| student << gets.split(" ")}
+lower, upper = gets.split(" ").map(&:to_i)
+
+success = []
+
+student.each do |x,y|
+    if lower <= y.to_i &&  y.to_i <= upper
         success << x
     end
 end
