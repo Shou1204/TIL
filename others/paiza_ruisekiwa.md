@@ -17,6 +17,7 @@
     - [区間内の個数 4](#区間内の個数-4)
   - [区間内の個数 (文字列) 1](#区間内の個数-文字列-1)
     - [区間内の個数 (文字列) 1 ](#区間内の個数-文字列-1-)
+    - [区間内の個数 (文字列) 1 ](#区間内の個数-文字列-1--1)
 
 
 
@@ -399,4 +400,24 @@ end
 end
 
 p b[8] - b[2]
+```
+
+### [区間内の個数 (文字列) 1 ](https://paiza.jp/works/mondai/prefix_sum_problems/prefix_sum_problems__string_count_step3)
+
+```ruby
+x, y = gets.split(" ").map(&:to_i)
+str = gets.chomp
+
+a = Array.new(y+1,0)
+b = Array.new(y+2,0)
+
+(0...y).each do |i|
+    a[i] = 1 if str[i] == "b"
+end
+
+(0..y).each do |i|
+    b[i+1] = b[i].to_i + a[i].to_i
+end
+
+puts b[y] - b[x-1]
 ```
