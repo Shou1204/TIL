@@ -13,6 +13,7 @@
     - [ 連続する N 個の和の最大値 4](#-連続する-n-個の和の最大値-4)
   - [区間内の個数](#区間内の個数)
     - [区間内の個数 1](#区間内の個数-1)
+    - [区間内の個数 3](#区間内の個数-3)
 
 
 
@@ -301,4 +302,24 @@ end
 end
 
 p b[8] - b[2]
+```
+
+### [区間内の個数 3](https://paiza.jp/works/mondai/prefix_sum_problems/prefix_sum_problems__section_count_step1)
+
+```ruby
+x,y = gets.split(" ").map(&:to_i)
+s = gets.split(" ").map(&:to_i)
+
+a = Array.new(y+1,0)
+b = Array.new(y+2,0)
+
+(0...y+1).each do |i|
+        a[i] = 1  if s[i].to_i % 2 == 0
+end
+
+(0...y+2).each do |i|
+    b[i+1] = b[i].to_i + a[i].to_i
+end
+
+p b[y+1] - b[x]
 ```
