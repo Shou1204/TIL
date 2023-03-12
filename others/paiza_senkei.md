@@ -1,5 +1,12 @@
 # paiza線型探索
 
+- [paiza線型探索](#paiza線型探索)
+  - [【指定された値の探索】指定された値の位置 3](#指定された値の探索指定された値の位置-3)
+  - [点と点の距離](#点と点の距離)
+  - [長方形に含まれる点 Ruby編](#長方形に含まれる点-ruby編)
+  - [成績優秀者の列挙](#成績優秀者の列挙)
+
+
 
 ## [【指定された値の探索】指定された値の位置 3](https://paiza.jp/works/mondai/sequence_search_problems/ruby/sequence_search_problems_search_value_boss/result?token=4373caf49057f9867a0ec4af6d7cc12f)
 
@@ -65,3 +72,20 @@ end
 puts count
 ```
 
+## [成績優秀者の列挙](https://paiza.jp/works/mondai/sequence_search_problems/sequence_search_problems_search_condition_step6)
+
+```ruby
+n = gets.to_i
+student = []
+(0...n).each { |i| student << gets.split(" ")}
+border = gets.to_i
+
+success = []
+
+student.each do |x,y|
+    if y.to_i >= border
+        success << x
+    end
+end
+puts success
+```
