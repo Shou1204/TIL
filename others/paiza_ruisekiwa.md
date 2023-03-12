@@ -176,3 +176,21 @@ a = Array.new(y+1,0)
 end
 puts a[y+1] - a[x]
 ```
+
+### [連続する N 個の和の最大値](https://paiza.jp/works/mondai/prefix_sum_problems/ruby/prefix_sum_problems__sum_max_step1/result?token=6c9662f1c8a21f95dae2754cf0c7e242)
+
+```ruby
+s = %w[1 5 9 7 5 3 2 5 8 4]
+s.map!(&:to_i)
+max = 0
+
+a =Array.new(s.size+1,0)
+(0...s.size).each do |i|
+    a[i+1] = a[i] + s[i]
+end
+
+(0...a.size - 3).each do |i|
+        max = [max, a[i+3] - a[i]].max
+end
+puts max
+```
