@@ -3,6 +3,8 @@
 - [累積和](#累積和)
   - [累積和の考え方](#累積和の考え方)
   - [開区間と閉区間](#開区間と閉区間)
+    - [区間の和 1](#区間の和-1)
+
 
 
 ## 累積和の考え方
@@ -122,4 +124,16 @@ s_8 : [0, 8) 総和
 s[y + 1] - s[x]
 
 と表すことができ、これを用いることでこの問題を解くことができます。
+```
+
+### [区間の和 1](https://paiza.jp/works/mondai/prefix_sum_problems/ruby/prefix_sum_problems__section_sum_step1/result?token=94e80bd7c3844556d2c6af1d8f78520e)
+
+```ruby
+a = [1, 5, 9, 7, 5, 3, 2, 5, 8, 4]
+s = Array.new(11, 0)
+
+(0..8).each do |i|
+    s[i + 1] = s[i] + a[i]
+end
+puts s[8] - s[2]
 ```
