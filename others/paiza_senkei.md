@@ -39,3 +39,29 @@ s.each do |x,y|
 end
 puts count
 ```
+
+## [長方形に含まれる点 Ruby編](https://paiza.jp/works/mondai/sequence_search_problems/sequence_search_problems_search_condition_step5)
+
+```ruby
+n = gets.to_i
+s = []
+(0...n).each { |i| s << gets.split(" ").map(&:to_i)}
+xs = gets.split(" ").map(&:to_i)
+ys = gets.split(" ").map(&:to_i)
+
+x_max = xs.max
+x_min = xs.min
+y_max = ys.max
+y_min = ys.min
+
+count = 0
+
+s.each do |x,y|
+    
+    if x <= x_max && x >= x_min && y <= y_max && y >= y_min
+        count += 1
+    end
+end
+puts count
+```
+
