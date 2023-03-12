@@ -4,6 +4,9 @@
   - [累積和の考え方](#累積和の考え方)
   - [開区間と閉区間](#開区間と閉区間)
     - [区間の和 1](#区間の和-1)
+    - [区間の和 2](#区間の和-2)
+    - [区間の和 3](#区間の和-3)
+    - [区間の和 4](#区間の和-4)
 
 
 
@@ -147,4 +150,29 @@ a = Array.new(11,0)
     a[i+1] = a[i].to_i + s[i].to_i
 end
 puts a[7+1] - a[2]
+```
+
+### [区間の和 3](https://paiza.jp/works/mondai/prefix_sum_problems/prefix_sum_problems__section_sum_step3)
+
+```ruby
+x,y = gets.split(" ").map(&:to_i)
+s = gets.split(" ").map(&:to_i)
+a = Array.new(y+1 , 0)
+
+(0..y).each do |i|
+    a[i+1] = a[i] + s[i]
+end
+puts a[y + 1] - a[x]
+```
+
+### [区間の和 4](https://paiza.jp/works/mondai/prefix_sum_problems/prefix_sum_problems__section_sum_boss)
+
+```ruby
+n,x, y = gets.split(" ").map(&:to_i)
+s = gets.split(" ").map(&:to_i)
+a = Array.new(y+1,0)
+(0..y).each do |i|
+    a[i+1] = a[i] + s[i]
+end
+puts a[y+1] - a[x]
 ```
