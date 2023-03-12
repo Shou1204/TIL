@@ -5,6 +5,8 @@
   - [長方形に含まれる点 Ruby編](#長方形に含まれる点-ruby編)
   - [成績優秀者の列挙](#成績優秀者の列挙)
   - [【特殊な探索】 成績優秀者の列挙 ](#特殊な探索-成績優秀者の列挙-)
+  - [第 k 要素の探索】k番目に大きな値 ](#第-k-要素の探索k番目に大きな値-)
+
 
 
 
@@ -107,4 +109,14 @@ student.each do |x,y|
     end
 end
 puts success
+```
+
+## [第 k 要素の探索】k番目に大きな値 ](https://paiza.jp/works/mondai/sequence_search_problems/sequence_search_problems_kthmax_boss)
+
+```ruby
+n = gets.to_i
+s = gets.split(" ").map(&:to_i)
+s = s.sort
+k = gets.to_i
+puts s[-k]
 ```
