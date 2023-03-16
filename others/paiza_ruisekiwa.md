@@ -24,6 +24,7 @@
     - [二次元累積和 2](#二次元累積和-2)
     - [二次元累積和 3](#二次元累積和-3)
     - [二次元累積和 4](#二次元累積和-4)
+    - [二次元累積和 5](#二次元累積和-5)
 
 
 
@@ -663,6 +664,27 @@ puts s[b+1][4] - s[a][4] - s[b+1][3] + s[a][3]
  
  (0...5).each do |i|
     (0...5).each do |j|
+         s[i + 1][j + 1] = s[i + 1][j] + s[i][j + 1] - s[i][j] + array[i][j]
+    end
+end
+
+puts s[c + 1][d + 1] - s[a][d + 1] - s[c + 1][b] + s[a][b]
+```
+
+### [二次元累積和 5](https://paiza.jp/works/mondai/prefix_sum_problems/prefix_sum_problems__2dsection_sum_step5)
+
+- とにかく二次元累積和は公式に当てはめること！
+
+```ruby
+n = gets.to_i
+a, b, c, d = gets.split(" ").map(&:to_i)
+s = Array.new(n+1){Array.new(n+1,0)}
+
+array = []
+(0...n).each {|i| array << gets.split(" ").map(&:to_i)}
+
+(0...n).each do |i|
+    (0...n).each do |j|
          s[i + 1][j + 1] = s[i + 1][j] + s[i][j + 1] - s[i][j] + array[i][j]
     end
 end
