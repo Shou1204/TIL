@@ -23,6 +23,7 @@
     - [二次元累積和 1 ](#二次元累積和-1-)
     - [二次元累積和 2](#二次元累積和-2)
     - [二次元累積和 3](#二次元累積和-3)
+    - [二次元累積和 4](#二次元累積和-4)
 
 
 
@@ -643,4 +644,28 @@ end
 
 # これも公式
 puts s[b+1][4] - s[a][4] - s[b+1][3] + s[a][3]
+```
+
+### [二次元累積和 4](https://paiza.jp/works/mondai/prefix_sum_problems/prefix_sum_problems__2dsection_sum_step4/edit?language_uid=ruby&t=b72ad9adb01f03082ef4f1ab91b4d8a5)
+
+- まず、公式に当てはめる
+- 長方形領域 [sx, gx) × [sy, gy)←この形にする
+- そして忠実に
+- (長方形領域内の整数の和) = s_{gy, gx} - s_{sy, gx} - s_{gy, sx} + s_{sy, sx}に当てはめること
+- x,yの間違いに注意すること
+
+```ruby
+ a, b, c, d = gets.split(" ").map(&:to_i)
+ s = Array.new(6){Array.new(6,0)}
+ 
+ array = []
+ (0...5).each {|i| array << gets.split(" ").map(&:to_i)}
+ 
+ (0...5).each do |i|
+    (0...5).each do |j|
+         s[i + 1][j + 1] = s[i + 1][j] + s[i][j + 1] - s[i][j] + array[i][j]
+    end
+end
+
+puts s[c + 1][d + 1] - s[a][d + 1] - s[c + 1][b] + s[a][b]
 ```
