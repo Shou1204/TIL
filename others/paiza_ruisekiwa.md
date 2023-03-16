@@ -25,6 +25,7 @@
     - [二次元累積和 3](#二次元累積和-3)
     - [二次元累積和 4](#二次元累積和-4)
     - [二次元累積和 5](#二次元累積和-5)
+    - [二次元累積和 6](#二次元累積和-6)
 
 
 
@@ -685,6 +686,25 @@ array = []
 
 (0...n).each do |i|
     (0...n).each do |j|
+         s[i + 1][j + 1] = s[i + 1][j] + s[i][j + 1] - s[i][j] + array[i][j]
+    end
+end
+
+puts s[c + 1][d + 1] - s[a][d + 1] - s[c + 1][b] + s[a][b]
+```
+
+### [二次元累積和 6](https://paiza.jp/works/mondai/prefix_sum_problems/prefix_sum_problems__2dsection_sum_boss1)
+
+```ruby
+n,m = gets.split(" ").map(&:to_i)
+a, b, c, d = gets.split(" ").map(&:to_i)
+s = Array.new(n+1){Array.new(m+1,0)}
+
+array = []
+(0...n).each {|i| array << gets.split(" ").map(&:to_i)}
+
+(0...n).each do |i|
+    (0...m).each do |j|
          s[i + 1][j + 1] = s[i + 1][j] + s[i][j + 1] - s[i][j] + array[i][j]
     end
 end
