@@ -43,3 +43,83 @@ binary_search(A : 数列, n : 数列のサイズ, k : 探索する値)
     
     return false
 ```
+
+
+### [値の探索](https://paiza.jp/works/mondai/binary_search/binary_search__basic_step0/edit?language_uid=ruby)
+
+- 方針
+```
+問題文にて与えられた疑似コードに従って、二分探索をおこなう関数 binary_search を実装すればよいです。
+
+探索範囲は閉区間 [left, right] で持つのがよいでしょう。
+区間 [0, n-1] を探索範囲とした状態からスタートし、探索範囲の中央 mid = (left+right)/2 を求める
+探索する値 k と、a[mid] を比較する
+
+a[mid] == k なら、値が見つかったので true を返す
+a[mid] < k なら、a[left] ~ a[mid] には値 k が存在しないことがわかるので、探索範囲の左端 left を mid+1 にする
+
+a[mid] > k なら、a[mid] ~ a[right] には値 k が存在しないことがわかるので、探索範囲の右端 right を mid-1 にする
+ことを、探索範囲が空になるまで繰り返せばよいです。
+
+探索範囲が空に、つまり left <= right が成り立たなくなってしまった場合は、数列に値 k が含まれていないということになるため、false を返します。
+```
+
+- 入力値
+```
+10
+3 11 18 25 40 58 69 81 88 99
+5
+11
+100
+2
+41
+69
+```
+
+- 回答
+```ruby
+# 配列の要素数
+n = gets.to_i
+
+# 配列を取得
+s = gets.split(" ").map(&:to_i)
+
+# 繰り返し回数
+time = gets.to_i
+
+# time回繰り返す
+(0...time).each do |i|
+
+    # 入力を受け取る
+    k = gets.to_i
+    left = 0 # 配列の左側
+    right = n-1 # 配列の右側 閉区間なので-1を忘れずに（重要）
+    result = "No" # デフォルト値を設定しておく
+    
+    # 最後の一つになるまで繰り返す
+    # 配列の真ん中がkになるまで繰り返す
+    # 最後の一つになるまでkがなければデフォルト値のNoがresultになる
+    while left <= right
+
+        # 配列の要素の真ん中のインデックス
+        mid = (left + right) / 2
+        
+        # 配列の真ん中は"k"?
+        if s[mid] == k
+            result = "Yes"
+            break
+        
+        # kが右側にあるので探索する範囲を変える
+        # 探索開始位置を真ん中+1からにする
+        elsif s[mid] < k
+            left = mid + 1
+
+        # kが左側にあるので探索する範囲を変える
+        # 探索終了位置を真ん中-1にする
+        else
+            right = mid - 1
+        end
+    end
+    puts result
+end
+```
