@@ -1,5 +1,8 @@
 - [二分探索とは](#二分探索とは)
     - [値の探索](#値の探索)
+  - [ある値以下または以上の要素数を求める](#ある値以下または以上の要素数を求める)
+    - [lower\_bound](#lower_bound)
+    - [upper\_bound](#upper_bound)
 
 # 二分探索とは
 ```
@@ -227,6 +230,35 @@ n = gets.to_i
         end
     end
     puts "#{l - right}"
+end
+```
+
+### [upper_bound](https://paiza.jp/works/mondai/binary_search/binary_search__basic_step2)
+
+- 探索範囲が変化する
+
+```ruby
+length = gets.to_i
+s = gets.split(" ").map(&:to_i).sort
+n = gets.to_i
+
+n.times do
+    target = gets.to_i
+    left = 0
+    right = length
+   
+   while left < right
+       mid = (left + right) / 2
+       
+        # 前の以上からより大きいに変わっているのでtarget+1 にすればOK
+        if target+1 > s[mid]
+            left = mid + 1
+        else
+            right = mid
+        end
+    end
+    puts "#{length - right}"
+    
 end
 ```
 
