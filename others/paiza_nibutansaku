@@ -3,6 +3,8 @@
   - [ある値以下または以上の要素数を求める](#ある値以下または以上の要素数を求める)
     - [lower\_bound](#lower_bound)
     - [upper\_bound](#upper_bound)
+    - [ある範囲に含まれている整数の個数](#ある範囲に含まれている整数の個数)
+
 
 # 二分探索とは
 ```
@@ -262,3 +264,80 @@ n.times do
 end
 ```
 
+### [ある範囲に含まれている整数の個数](https://paiza.jp/works/mondai/binary_search/binary_search__basic_boss)
+
+
+
+```ruby
+length = gets.to_i
+s = gets.split(" ").map(&:to_i).sort
+n = gets.to_i
+
+n.times do
+    min,max = gets.split(" ").map(&:to_i)
+    left = 0
+    right = length
+   
+   # 以上の条件の要素数を抜き出す
+   while left < right
+       mid = (left + right) / 2
+       
+        if min  > s[mid]
+            left = mid + 1
+        else
+            right = mid
+        end
+    end
+    
+    lower_count = length - right
+    left = 0
+    right = length
+    
+    # 条件より大きい要素数を抜き出す
+    while left < right
+       mid = (left + right) / 2
+       
+       # "より大きい"が条件なので"+1"にすること
+        if max + 1 > s[mid]
+            left = mid + 1
+        else
+            right = mid
+        end
+    end
+    upper_count = length - right
+
+    # 以上の条件の要素数から、上限より大きい要素数を引いたの値が回答になる
+    puts "#{lower_count - upper_count}"
+end
+```
+
+- メソッドでまとめたバージョン
+```ruby
+length = gets.to_i
+s = gets.split(" ").map(&:to_i).sort
+n = gets.to_i
+
+def binary_serch(m,length,s)
+    left = 0
+    right = length
+   
+   while left < right
+       mid = (left + right) / 2
+       
+        if m  > s[mid]
+            left = mid + 1
+        else
+            right = mid
+        end
+    end
+  return length - right
+ end
+ 
+ n.times do
+     min,max = gets.split(" ").map(&:to_i)
+     lower_count = binary_serch(min,length,s)
+     upper_count = binary_serch(max + 1,length,s)
+     puts "#{lower_count - upper_count}"
+end
+
+```
